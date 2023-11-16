@@ -3,3 +3,4 @@
 * [Introduction](README.md)
 * [Mathematical Review](mathematical-review.md)
 * [Linear Regression](linear-regression.md)
+* [Page 1](page-1.md)
