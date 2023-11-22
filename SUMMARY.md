@@ -3,4 +3,6 @@
 * [Introduction](README.md)
 * [Mathematical Review](mathematical-review.md)
 * [Linear Regression](linear-regression.md)
-* [Page 1](page-1.md)
+* [IV Method](iv-method.md)
+* [Synthetic Control](synthetic-control.md)
+* [Nonparametric Method](nonparametric-method.md)
