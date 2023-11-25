@@ -44,6 +44,8 @@ Recall the Conditional Expectation Function (CEF): $$\mathbb{E}[Y \mid X=x]=m(x)
 
 
 
+
+
 This Linear Conditional Expectation has several implications:
 
 1. $$\mathbb{E}(U)=0$$.
@@ -54,5 +56,5 @@ This Linear Conditional Expectation has several implications:
 
 ### "Best" Linear Approximation
 
-In general, the conditional expectation is probably NOT linear. We are just using linear function to approximate this.
+In general, the conditional expectation is probably NOT linear. We are just using a linear function to approximate this.
 

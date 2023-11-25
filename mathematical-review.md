@@ -10,7 +10,7 @@ description: >-
 
 ### Best Predictor
 
-Given a random vector $$X$$, we want to forecast $$Y$$, Let $$g(X)$$ be a predictor of $$Y$$. Then define the the mean squared error of predictor $$g(X)$$ as $$\mathbb{E}[(Y-g(X))^2]$$. We can have that the CEF $$m(x) = \mathbb{E}(Y|X=x)$$ is the best predictor, which has the smallest mean squared prediction error. Which means if we have $$\mathbb{E}(Y^2) < \infin$$, then for any predictor $$g(X)$$, we have:
+Given a random vector $$X$$, we want to forecast $$Y$$, Let $$g(X)$$ be a predictor of $$Y$$. For Prediction Error, it is defined as $$Y - g(X)$$, and this prediction error can be treated as a random variable, and  it can take positive and negative values. To minimize this prediction error, we define the the mean squared error (MSE) of predictor $$g(X)$$ as $$\mathbb{E}[(Y-g(X))^2]$$. We can have that the CEF $$m(x) = \mathbb{E}(Y|X=x)$$ is the best predictor, which has the smallest mean squared prediction error. Which means if we have $$\mathbb{E}(Y^2) < \infin$$, then for any predictor $$g(X)$$, we have:
 
 &#x20;                                                   $$\mathbb{E}[(Y-g(X))^2] \geq \mathbb{E}[(Y-m(X))^2]$$
 
