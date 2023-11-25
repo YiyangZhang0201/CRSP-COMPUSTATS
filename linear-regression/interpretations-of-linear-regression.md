@@ -102,11 +102,38 @@ However, only the part $$\mathbb{E}\left[\left(\mathbb{E}[Y \mid X]-X^{\prime} b
 
 ### Summary: Two in One
 
+Two interpretations from equivalent optimization problems:
 
+$$
+\beta \in \underset{b \in \mathbf{R}^{k+1}}{\operatorname{argmin}} E\left[\left(E[Y \mid X]-X^{\prime} b\right)^2\right] \text { and } \beta \in \underset{b \in \mathbb{R}^{k+1}}{\operatorname{argmin}} E\left[\left(Y-X^{\prime} b\right)^2\right]
+$$
+
+Note $$E\left[\left(Y-X^{\prime} b\right)^2\right]$$ is a convex (as a function of $$b$$ ) and this has the following implications.
+
+* We can take the derivative on it and use FOC to solve $$b$$ and get $$\beta$$
+* However, in order to do this, we need to make more assumptions. And I will introduce them in detail later in the estimation of $$\beta$$
 
 ## Casual Model
 
-&#x20;
+In order to analysis the Casual Effect using the model, suppose that: $$Y=g(X, U)$$, where $$X$$ are the observed determinants of $$Y$$ and $$U$$ are the unobserved determinants of $$Y$$.
+
+Such a relationship is a model of how $$Y$$ is determined and may come from physics, economics, etc. The effect of $$X_j$$ on $$Y$$ holding $$X_{-j}$$ and $$U$$ constant (i.e., ceteris paribus) is determined by this function $$g$$.
+
+If $$g$$ is differentiable. then it is given by
+
+$$
+D_{x_j} g(X, U) \text {. }
+$$
+
+If we assume further that $$g$$ is linear, such that,
+
+$$
+g(X, U)=X^{\prime} \beta+U,
+$$
+
+then the ceteris paribus effect of $$X_j$$ on $$Y$$ is simply $$\beta_j$$. We may normalize $$U$$ so that $$E[U]=0$$, we can achieve this by replacing $$U$$ with $$U-E[U]$$ and $$\beta_0$$ with $$\beta_0+E[U]$$ if $$E[U]=0$$ is not the original case.
+
+On the other hand, $$E[U \mid X], E\left[U \mid X_j\right]$$ and $$E\left[U X_j\right]$$ for $$1 \leq j \leq k$$ may or may not equal zero.
 
 
 
