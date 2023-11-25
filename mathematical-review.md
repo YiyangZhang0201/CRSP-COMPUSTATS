@@ -24,7 +24,7 @@ $$\mathbb{E}[u^2] = \mathbb{E}[(Y-g(X))^2]=\mathbb{E}[(Y-m(X) + m(X) -g(X))^2]$$
 
 since: $$\mathbb{E}[(Y-m(X))(m(X) -g(X))] = \mathbb{E}[\mathbb{E}[(Y-m(X))(m(X) -g(X))|X]]$$
 
-as under condition $$X$$, $$m(X) -g(X)$$ is no longer a random variable, by the defination of $$m(X)$$
+as under condition $$X$$, $$m(X) -g(X)$$ is no longer a random variable, by the definition of $$m(X)$$
 
 $$\mathbb{E}[\mathbb{E}[(Y-m(X))(m(X) -g(X))|X]] = \mathbb{E}[(m(X) -g(X))\mathbb{E}[(Y-m(X))|X]] = 0$$
 
