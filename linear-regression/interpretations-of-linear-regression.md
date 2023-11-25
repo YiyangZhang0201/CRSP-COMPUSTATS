@@ -160,6 +160,12 @@ Under health status, we have two health status variables: $$(Y(0), Y(1))$$, wher
 
 Using this notation, we may rewrite the observed outcome as:
 
+$$
+Y=\beta_0+\beta_1 X+U \text { with } \beta_1=Y(1)-Y(0) .
+$$
+
+Note that this is not quite "the" linear model: since the ccoefficient $$\beta_1$$ is random. **For** $$\beta_1$$ **to be constant. we need to assume that** $$Y(1)-Y(0)$$ **is constant across individuals.**
+
 
 
 
