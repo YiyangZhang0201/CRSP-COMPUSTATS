@@ -32,4 +32,20 @@ Now, we talk about each way in detail.
 
 ### Linear Conditional Expectation
 
+Suppose that:
+
+$$
+E[Y \mid X]=X^{\prime} \beta
+$$
+
+and define: $$U=Y-E[Y \mid X]$$
+
 Recall the Conditional Expectation Function (CEF): $$\mathbb{E}[Y \mid X=x]=m(x)$$, which is the best estimator of $$Y$$.
+
+
+
+This Linear Conditional Expectation has several implications:
+
+1. $$\mathbb{E}(u)=0$$.
+2. $$\mathbb{E}[X U]=\mathbb{E}\left[X \cdot\left(Y-X^{\prime} \beta\right)\right]=\mathbb{E}[X Y]-\mathbb{E}\left[XX^{\prime} \beta\right]$$
+3. $$\operatorname{Cov}(X, U)=0$$
