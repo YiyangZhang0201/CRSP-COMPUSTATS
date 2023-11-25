@@ -48,7 +48,6 @@ Therefore, we also **cannot** interpret $$\beta_j$$ as the **ceteris paribus** (
 * As $$U=Y-\mathbb{E}[Y \mid X]$$, we have $$Y=\mathbb{E}[Y \mid X]+U = m(X) + U$$
 * So, $$\frac{\partial Y}{\partial X_i}=\frac{\partial m(X)}{\partial X_i}+\frac{\partial U}{\partial X_i}$$
 * $$\frac{\partial m(X)}{\partial X_i} = \beta_i$$ only if $$m(X)$$ is a linear function, e.g. $$m(X)=\beta_0+\beta_1 X_1+\cdots+\beta_k X_k$$
-* Also, $$\frac{\partial U}{\partial X_i} = 0$$ since $$\operatorname{Cov}(X, U)=0$$
 
 ## "Best" Linear Approximation
 
@@ -56,13 +55,22 @@ In general, the conditional expectation is probably NOT linear. We are just usin
 
 Suppose that: $$E\left[Y^2\right]<\infty$$ and $$E\left[X X^{\prime}\right]<\infty$$ (or, $$E\left[X_j^2\right]<\infty$$ for $$\left.1 \leq j \leq k\right)$$
 
-Under these assumptions, one may consider what is the **"best" linear approximation** (i.e., function of the form $$X^{\prime} b$$ for some choice of $$b \in \mathbf{R}^{k+1}$$) to the (best linear predictor for) conditional expectation.&#x20;
+Under these assumptions, one may consider what is the **"best" linear approximation** (i.e., function of the form $$X^{\prime} b$$ for some choice of $$b \in \mathbf{R}^{k+1}$$, $$b$$ as the best linear predictor for $$\beta$$) to the conditional expectation.&#x20;
 
+To this end, consider the minimization problem for approximation/prediction error:
 
+$$
+\min _{b \in \mathbf{R}^{k+1}} E\left[\left(E[Y \mid X]-X^{\prime} b\right)^2\right]
+$$
 
+Minimize over $$b$$ and denote $$\beta$$ as the solution to this minimization problem. Then,
 
+* $$\beta$$ is called the best linear predictor, and it is the linear projection coefficient.
+* $$b$$ is the generic coefficient vector.
 
 ## Casual Model
+
+
 
 
 
