@@ -22,9 +22,14 @@ Here, we got the basic structure of the Linear Regression.
 
 ## Interpretations of Linear Regression
 
-Thee are three ways to interpret the Linear Regression:
+There are three ways to interpret Linear Regression:
 
-1. Linear Conditional Expectiation
+1. Linear Conditional Expectation
 2. Best Linear Approximation
 3. Causal Model
 
+Now, we talk about each way in detail.
+
+### Linear Conditional Expectation
+
+Recall the Conditional Expectation Function (CEF): $$\mathbb{E}[Y \mid X=x]=m(x)$$, which is the best estimator of $$Y$$.
