@@ -44,8 +44,25 @@ For $$\beta$$ we got by this define method, it does not necessarily have a Causa
 
 Therefore, we also **cannot** interpret $$\beta_j$$ as the **ceteris paribus** (i.e., holding $$X_{-j}$$ and $$U$$ constant) effect of a one unit change in $$X_i$$ on $$Y$$. We need more information to check if we can do that.
 
-
+* We are only holding $$X_j, j \neq i$$ constant, but we didn't hold $$U$$ constant in this structure.
+* As $$U=Y-\mathbb{E}[Y \mid X]$$, we have $$Y=\mathbb{E}[Y \mid X]+U = m(X) + U$$
+* So, $$\frac{\partial Y}{\partial X_i}=\frac{\partial m(X)}{\partial X_i}+\frac{\partial U}{\partial X_i}$$
+* $$\frac{\partial m(X)}{\partial X_i} = \beta_i$$ only if $$m(X)$$ is a linear function, e.g. $$m(X)=\beta_0+\beta_1 X_1+\cdots+\beta_k X_k$$
+* Also, $$\frac{\partial U}{\partial X_i} = 0$$ since $$\operatorname{Cov}(X, U)=0$$
 
 ## "Best" Linear Approximation
 
 In general, the conditional expectation is probably NOT linear. We are just using a linear function to approximate this.
+
+Suppose that: $$E\left[Y^2\right]<\infty$$ and $$E\left[X X^{\prime}\right]<\infty$$ (or, $$E\left[X_j^2\right]<\infty$$ for $$\left.1 \leq j \leq k\right)$$
+
+Under these assumptions, one may consider what is the **"best" linear approximation** (i.e., function of the form $$X^{\prime} b$$ for some choice of $$b \in \mathbf{R}^{k+1}$$) to the (best linear predictor for) conditional expectation.&#x20;
+
+
+
+
+
+## Casual Model
+
+
+
