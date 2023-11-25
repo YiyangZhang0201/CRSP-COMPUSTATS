@@ -49,3 +49,10 @@ This Linear Conditional Expectation has several implications:
 1. $$\mathbb{E}(U)=0$$.
 2. $$\mathbb{E}[X U]=\mathbb{E}\left[X \cdot\left(Y-X^{\prime} \beta\right)\right]=\mathbb{E}[X Y]-\mathbb{E}\left[XX^{\prime} \beta\right]$$
 3. $$\operatorname{Cov}(X, U)=0$$
+
+
+
+### "Best" Linear Approximation
+
+In general, the conditional expectation is probably NOT linear. We are just using linear function to approximate this.
+
