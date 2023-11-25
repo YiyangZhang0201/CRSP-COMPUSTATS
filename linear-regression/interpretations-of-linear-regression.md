@@ -139,6 +139,27 @@ On the other hand, $$E[U \mid X], E\left[U \mid X_j\right]$$ and $$E\left[U X_j\
 
 Potential outcomes are an easy way to think about causal relationships.
 
+Illustration: randomized controlled experiment where individuals are randomly assigned to a treatment (a drug) that is intended to improve their health status.
+
+Notation: Let $$Y$$ denote the observed health status and $$X \in \{0,1\}$$ denote whether the individual takes the drug or not.
+
+The **causal relationship** between $$X$$ and $$Y$$ can be described using the so-called **potential outcomes**:
+
+* $$Y(0)$$ potential outcome in the absence of treatment
+* $$Y(1)$$ potential outcome in the presence of treatment
+
+Under health status, we have two health status variables: $$(Y(0), Y(1))$$, where
+
+* $$Y(0)$$ is the value of the outcome that would have been observed if (possibly counter-to-fact) $$X$$ were 0.
+* $$Y(1)$$ is the value of the outcome that would have been observed if (possibly counter-to-fact) $$X$$ were 1.
+
+### Treatment Effects
+
+* The difference $$Y(1)-Y(0)$$ is called the **treatment effect (TE)**.
+* The quantity $$E[Y(1)-Y(0)]$$ is usually referred to as the **average treatment effect (ATE)**.
+
+Using this notation, we may rewrite the observed outcome as:
+
 
 
 
