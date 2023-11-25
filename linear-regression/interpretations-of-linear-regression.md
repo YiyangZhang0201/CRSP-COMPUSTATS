@@ -68,7 +68,45 @@ Minimize over $$b$$ and denote $$\beta$$ as the solution to this minimization pr
 * $$\beta$$ is called the best linear predictor, and it is the linear projection coefficient.
 * $$b$$ is the generic coefficient vector.
 
+But we still **cannot** interpret $$\beta_j$$ as the ceteris paribus (i.e., holding $$X_{-j}$$ and $$U$$ constant) effect of a one unit change in $$X_j$$ on $$Y$$. Because we still do not know the information about the error term. Partial derivative only hold for other $$X_i$$s.
+
+### Best Linear Predictor (BLP)
+
+Best linear predictor (BLP) can also be defined as:
+
+$$
+\beta \in \underset{b \in \mathbf{R}^{k+1}}{\operatorname{argmin}} E\left[\left(Y-X^{\prime} b\right)^2\right]
+$$
+
+This $$\beta$$ is also a convenient way of summarizing the “best” linear predictor of $$Y$$ given $$X$$.
+
+**Proof:**
+
+$$\mathbb{E}\left[\left(Y-X^{\prime} b\right)^2\right] =\mathbb{E}\left[\left(Y-\mathbb{E}[Y \mid X]+\mathbb{E}[Y \mid X]-X^{\prime} b\right)^2\right]$$
+
+$$= \mathbb{E}\left[ (Y - \mathbb{E}[Y|X])^2 \right] + \mathbb{E}\left[ (\mathbb{E}[Y \mid X] - X^{\prime} b)^2 \right]+2 \mathbb{E}\left[(Y-\mathbb{E}[Y \mid X])\left(\mathbb{E}[Y \mid X]-X^{\prime} b\right)\right]$$
+
+As for $$\mathbb{E}\left[(Y-\mathbb{E}[Y \mid X])\left(\mathbb{E}[Y \mid X]-X^{\prime} b\right)\right]$$, we have that it is equal to,
+
+$$\mathbb{E}\left[\mathbb{E}\left[(Y-\mathbb{E}[Y \mid X])\left(\mathbb{E}[Y \mid X]-X^{\prime} b\right) \mid X\right]\right)$$, and $$\mathbb{E}[Y \mid X]-X^{\prime} b$$ only depend on $$X$$, we have:
+
+$$\mathbb{E}\left[(Y-\mathbb{E}[Y \mid X])\left(\mathbb{E}[Y \mid X]-X^{\prime} b\right)\right] = \mathbb{E}[(\mathbb{E}[Y \mid X]-X^{\prime} b)(\mathbb{E}[Y-\mathbb{E}[Y \mid X]\mid X])]$$
+
+$$=\mathbb{E}\left[\left(\mathbb{E}[Y \mid X]-X^{\prime} b\right)(\mathbb{E}[\mathbb{E}[Y \mid X] -\mathbb{E}[Y \mid X]])\right] = 0$$
+
+So, we got:
+
+$$\mathbb{E}\left[\left(Y-X^{\prime} b\right)^2\right]=\mathbb{E}\left[(Y-\mathbb{E}[Y \mid X])^2\right]+\mathbb{E}\left[\left(\mathbb{E}[Y \mid X]-X^{\prime} b\right)^2\right]$$
+
+However, only the part $$\mathbb{E}\left[\left(\mathbb{E}[Y \mid X]-X^{\prime} b\right)^2\right]$$ is depended on $$b$$, so optimize the whole function over $$b$$ is same to optimize over this part. Therefore, this BLP definition is same with the previous one.
+
+### Summary: Two in One
+
+
+
 ## Casual Model
+
+&#x20;
 
 
 
