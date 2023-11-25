@@ -2,7 +2,8 @@
 
 * [Introduction](README.md)
 * [Mathematical Review](mathematical-review.md)
-* [Linear Regression](linear-regression.md)
+* [Linear Regression](linear-regression/README.md)
+  * [Interpretations of Linear Regression](linear-regression/interpretations-of-linear-regression.md)
 * [IV Method](iv-method.md)
 * [Differences in Differences](differences-in-differences.md)
 * [Synthetic Control](synthetic-control.md)
