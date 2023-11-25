@@ -4,6 +4,7 @@
 * [Mathematical Review](mathematical-review.md)
 * [Linear Regression](linear-regression/README.md)
   * [Interpretations of Linear Regression](linear-regression/interpretations-of-linear-regression.md)
+  * [Linear Regression When E\[XU\]=0](linear-regression/linear-regression-when-e-xu-0.md)
 * [IV Method](iv-method.md)
 * [Differences in Differences](differences-in-differences.md)
 * [Synthetic Control](synthetic-control.md)

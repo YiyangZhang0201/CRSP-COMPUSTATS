@@ -133,7 +133,11 @@ $$
 
 then the ceteris paribus effect of $$X_j$$ on $$Y$$ is simply $$\beta_j$$. We may normalize $$U$$ so that $$E[U]=0$$, we can achieve this by replacing $$U$$ with $$U-E[U]$$ and $$\beta_0$$ with $$\beta_0+E[U]$$ if $$E[U]=0$$ is not the original case.
 
-On the other hand, $$E[U \mid X], E\left[U \mid X_j\right]$$ and $$E\left[U X_j\right]$$ for $$1 \leq j \leq k$$ may or may not equal zero.
+On the other hand, $$E[U \mid X], E\left[U \mid X_j\right]$$ and $$E\left[U X_j\right]$$ for $$1 \leq j \leq k$$ may or may not equal zero. This aspect is crucial in causal inference as it relates to the independence or correlation of the unobserved determinants with the observed variables. So, $$\beta_j$$ might be biased for the ceteris paribus effect. To get the ceteris paribus effect, we need more assumptions.
+
+### Potential Outcomes
+
+Potential outcomes are an easy way to think about causal relationships.
 
 
 
