@@ -108,10 +108,49 @@ $$
 \beta \in \underset{b \in \mathbf{R}^{k+1}}{\operatorname{argmin}} E\left[\left(E[Y \mid X]-X^{\prime} b\right)^2\right] \text { and } \beta \in \underset{b \in \mathbb{R}^{k+1}}{\operatorname{argmin}} E\left[\left(Y-X^{\prime} b\right)^2\right]
 $$
 
-Note $$E\left[\left(Y-X^{\prime} b\right)^2\right]$$ is a convex (as a function of $$b$$ ) and this has the following implications.
+**Note** $$E\left[\left(Y-X^{\prime} b\right)^2\right]$$ **is a convex** (as a function of $$b$$ ) and this has the following implications.
 
 * We can take the derivative on it and use FOC to solve $$b$$ and get $$\beta$$
-* However, in order to do this, we need to make more assumptions. And I will introduce them in detail later in the estimation of $$\beta$$
+* **However, in order to do this, we need to make more assumptions.** And I will introduce them in detail later in the estimation of $$\beta$$
+
+Therefore, we can have that:
+
+$$\begin{aligned} \frac{\partial \mathbb{E}\left[\left(Y-X^{\prime} b\right)^2\right]}{\partial b} & =\mathbb{E}\left[\frac{\partial\left(Y-X^{\prime} b\right)^2}{\partial b}\right]=\mathbb{E}\left[\left(Y-X^{\prime} b\right) \cdot X\right] \\ & \left.=\mathbb{E}[Y X]-\mathbb{E}\left[X^{\prime} b X\right]=\mathbb{E}[Y X]-\mathbb{E}\left[X^{\prime} X b\right]\right]=0\end{aligned}$$
+
+We can solve $$b \rightarrow \beta$$. This is the **First Order Condition (FOC)**, note that in above equations:
+
+1.  We can change the order between the expectation and partial derivative because of the **dominated convergence theorem**.
+
+    **Lemma:**
+
+    Let $$X \in \mathcal{X}$$ be a random variable $$g: \mathbb{R} \times \mathcal{X} \rightarrow \mathbb{R}$$ a function such that $$g(t, X)$$ is integrable for all $$t$$ and $$g$$ is continuously differentiable w.r.t. $$t$$. Assume that there is a random variable $$Z$$ such that $$\left|\frac{\partial}{\partial t} g(t, X)\right| \leq Z$$ a.s. for all $$t$$ and $$\mathbb{E}(Z)<\infty$$. Then
+
+    $$
+    \frac{\partial}{\partial t} \mathbb{E}(g(t, X))=\mathbb{E}\left(\frac{\partial}{\partial t} g(t, X)\right) .
+    $$
+
+    **Proof:**
+
+    We have
+
+    $$
+    \begin{aligned} \frac{\partial}{\partial t} \mathbb{E}(g(t, X)) & =\lim _{h \rightarrow 0} \frac{1}{h}(\mathbb{E}(g(t+h, X))-\mathbb{E}(g(t, X))) \\ & =\lim _{h \rightarrow 0} \mathbb{E}\left(\frac{g(t+h, X)-g(t, X)}{h}\right) \\ & =\lim _{h \rightarrow 0} \mathbb{E}\left(\frac{\partial}{\partial t} g(\tau(h), X)\right), \end{aligned}
+    $$
+
+    where $$\tau(h) \in(t, t+h)$$ exists by the mean value theorem. By assumption we have
+
+    $$
+    \left|\frac{\partial}{\partial t} g(\tau(h), X)\right| \leq Z
+    $$
+
+    and thus we can use the dominated convergence theorem to conclude
+
+    $$
+    \frac{\partial}{\partial t} \mathbb{E}(g(t, X))=\mathbb{E}\left(\lim _{h \rightarrow 0} \frac{\partial}{\partial t} g(\tau(h), X)\right)=\mathbb{E}\left(\frac{\partial}{\partial t} g(t, X)\right) .
+    $$
+
+    This completes the proof.
+2. We can change the order between the $$X$$ and $$b$$ because they are scalers.
 
 ## Casual Model
 

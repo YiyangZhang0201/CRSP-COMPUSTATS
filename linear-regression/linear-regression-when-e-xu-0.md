@@ -45,11 +45,19 @@ $$
 c^{\prime} \mathbb{E}\left[X X^{\prime}\right] c=\mathbb{E}\left[c^{\prime} X X^{\prime} c\right]=\mathbb{E}\left[\left(c^{\prime} X\right)^2\right]=0 \text { with } P=1
 $$
 
+In order for $$E\left[X X^{\prime}\right]$$ to be positive definite, $$c^{\prime} \mathbb{E}\left[X X^{\prime}\right] c$$ can take value 0, but it cannot have this with P=1. So, $$c^{\prime} \mathbb{E}\left[X X^{\prime}\right] c$$ is not positive definite, therefore it is not invertible. This is a contradiction.
 
+Note that, based on the calculation rule of the matrix, $$(A B)^{\prime}=B^{\prime} A^{\prime}$$, we have $$(X^{\prime} Z)^{\prime}=Z^{\prime} X$$, therefore,&#x20;
+
+$$
+\begin{aligned} Z^{\prime} \mathbb{E}\left[X X^{\prime}\right] Z & =\mathbb{E}\left[Z^{\prime} X X^{\prime} Z\right]=\mathbb{E}\left[Z^{\prime} X\left(Z^{\prime} X\right)^{\prime}\right] \\ & =\mathbb{E}\left[\left(Z^{\prime} X\right)^2\right] \geqslant 0 \end{aligned}
+$$
+
+So, $$E\left[X X^{\prime}\right]$$ is always semi-positive definite, we need $$E\left[X X^{\prime}\right]>0$$ with $$P>0$$ to be positive definite.
 
 ## Solving for Beta
 
-
+* $$E[U X]=0$$ implies that $$E\left[X\left(Y-X^{\prime} \beta\right)\right]=0$$:&#x20;
 
 
 
@@ -108,3 +116,6 @@ $$
 $$
 
 is also a projection matrix. It projects a vector onto the $$((n-k-1)$$-dimensional) vector space orthogonal to the column space of $$\mathbb{X}$$. Hence, $$\mathbb{M X}=0$$. Note that $$\mathbb{M Y}=\hat{\mathbb{U}}$$. For this reason, $$\mathbb{M}$$ is sometimes called the **"residual maker" matrix**.
+
+**Proof**:
+
