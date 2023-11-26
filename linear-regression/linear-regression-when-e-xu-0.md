@@ -1,5 +1,7 @@
 # Linear Regression When E\[XU]=0
 
+## Assumptions for Linear Regression when E\[XU]=0
+
 Let $$(Y, X, U)$$ be a random vector where $$Y$$ and $$U$$ take values in $$\mathbf{R}$$ and $$X$$ takes values in $$\mathbf{R}^{k+1}$$. Assume further that $$X=\left(X_0, X_1, \ldots, X_k\right)^{\prime}$$ with $$X_0=1$$ and let $$\beta=\left(\beta_0, \beta_1, \ldots, \beta_k\right)^{\prime} \in \mathbf{R}^{k+1}$$ be such that
 
 $$
@@ -34,4 +36,18 @@ There is perfect collinearity or multicollinearity in $$X$$ if there exists nonz
 Let $$X$$ be such that $$E\left[X X^{\prime}\right]<\infty$$. Then $$E\left[X X^{\prime}\right]$$ is invertible iff there is no perfect collinearity in $$X$$.
 
 **Proof**:
+
+
+
+
+
+
+
+## Solving for beta
+
+
+
+
+
+
 
