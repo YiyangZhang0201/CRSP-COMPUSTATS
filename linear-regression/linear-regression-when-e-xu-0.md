@@ -57,11 +57,24 @@ So, $$E\left[X X^{\prime}\right]$$ is always semi-positive definite, we need $$E
 
 ## Solving for Beta
 
-* $$E[U X]=0$$ implies that $$E\left[X\left(Y-X^{\prime} \beta\right)\right]=0$$:&#x20;
+* $$E[U X]=0$$ implies that $$E\left[X\left(Y-X^{\prime} \beta\right)\right]=0$$, which is the FOC for optimization problem $$\underset{b \in \mathbb{R}^{k+1}}{\operatorname{argmin}} E\left[\left(Y-X^{\prime} b\right)^2\right]$$: $$\frac{\partial \mathbb{E}\left[\left(Y-X^{\prime} b\right)^2\right]}{\partial b}=\mathbb{E}\left[\frac{\partial\left(Y-X^{\prime} b\right)^2}{\partial b}\right]=\mathbb{E}\left[\left(Y-X^{\prime} b\right) \cdot X\right]=0$$
+* As $$\beta$$ is the solution to this optimization problem. So, we have $$\mathbb{E}\left[\left(Y-X^{\prime} \beta\right) \cdot X\right]=0$$
+* $$\mathbb{E}[Y X]-\mathbb{E}\left[X^{\prime} X \beta\right]=0$$ $$\Rightarrow$$ $$\mathbb{E}[X Y]=\mathbb{E}[X X^{\prime}]\beta$$
+* As $$E\left[X X^{\prime}\right]<\infty$$ and $$E\left[X X^{\prime}\right]$$ is positive definite. So, it exists and is invertible. We have:
 
+&#x20;                                                           $$\beta=\left[\mathbb{E}\left[X X^{\prime}\right]\right]^{-1} \mathbb{E}[X Y]$$           &#x20;
 
+Note that, here the $$\beta$$ we got is the linear projection coefficient.&#x20;
 
+And for $$E[U X]=0$$, we can have that $$E[U] = 0$$.
 
+**Proof:**
+
+Since $$E[U X]=0$$ indicates $$X$$ is independent with $$U$$,  $$\mathbb{E}[x_j u]=0$$ for $$j = 1 , \cdots, k$$.$$\Rightarrow$$$$x_j \perp u$$
+
+$$Cov(X, U) = \mathbb{E}[XU] - \mathbb{E}[X]\mathbb{E}[U] = 0 - \mathbb{E}[X]\mathbb{E}[U] = 0$$
+
+As $$\mathbb{E}[X] \neq 0$$, so we have $$\mathbb{E}[U]=0$$.
 
 ## Estimating Beta using OLS
 
