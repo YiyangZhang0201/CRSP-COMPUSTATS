@@ -88,9 +88,21 @@ $$
 \hat{\beta}=\left(\frac{1}{n} \sum_{1 \leq i \leq n} X_i X_i^{\prime}\right)^{-1}\left(\frac{1}{n} \sum_{1 \leq i \leq n} X_i Y_i\right)=\left(\sum_{1 \leq i \leq n} X_i X_i^{\prime}\right)^{-1}\left(\sum_{1 \leq i \leq n} X_i Y_i\right)
 $$
 
+This estimator is called the **ordinary least squares (OLS) estimator** of $$\beta$$ because it can also be derived as the solution to the following minimization problem:
 
+$$
+\min _{b \in \mathbf{R}^{k+1}} \frac{1}{n} \sum_{1 \leq i \leq n}\left(Y_i-X_i^{\prime} b\right)^2
+$$
 
-## Matrix Notation
+Note that we can also apply weight to the above formula to make this a **weighted least squares (WLS)** estimator.&#x20;
+
+$$
+\min _{b \in \mathbf{R}^{k+1}} \frac{1}{n} \sum_{1 \leq i \leq n}W_i \left(Y_i-X_i^{\prime} b\right)^2
+$$
+
+So, we have that OLS is a special case of WLS. In this case, $$W_i$$s are equal to $$1$$.
+
+### Matrix Notation
 
 Define
 
