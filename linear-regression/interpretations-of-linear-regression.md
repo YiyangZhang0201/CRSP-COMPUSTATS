@@ -166,7 +166,13 @@ $$
 
 Note that this is not quite "the" linear model: since the ccoefficient $$\beta_1$$ is random. **For** $$\beta_1$$ **to be constant. we need to assume that** $$Y(1)-Y(0)$$ **is constant across individuals.**
 
+Under all these assumptions: we end up with a linear constant effect causal model with $$U$$ independent with $$X$$ (from the nature of the randomized experiment), $$E[U]=0$$, and so $$E[X U]=0$$.
 
+Without assuming constant treatment effects, it can be shown that **a regression of** $$Y$$ **on** $$X$$ **identifies the average treatment effect**,
 
+$$
+\beta=\frac{\operatorname{Cov}[Y, X]}{\operatorname{Var}[X]}=E[Y(1)-Y(0)]
+$$
 
+which is often called a **causal parameter** given that it is an average of causal effects.
 
