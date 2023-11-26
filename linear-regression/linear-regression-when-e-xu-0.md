@@ -20,10 +20,12 @@ We will make following three assumptions for this model.
    3.  **For Causal Model:** the regression is understood as modeling a causal relationship between $$X$$ and $$Y$$. Here, $$\beta_1$$ is interpreted as the causal effect of $$X$$ on $$Y$$.
 
        For $$\beta_1$$ to represent the causal effect of $$X$$ on $$Y$$, it is crucial that all other factors influencing $$Y$$ are either controlled for or are not correlated with $$X$$. The error term $$U$$ includes all these other factors. **If** $$U$$ **were correlated with** $$X$$**, it would mean that there are omitted variables that both affect** $$Y$$ **and are related to** $$X$$**, which would bias the estimation of the causal effect.** Therefore, ensuring $$E[X U]=0$$ is essential for a valid causal interpretation, as it implies that there are no omitted confounders that are correlated with $$X$$.
-2. $$E\left[X X^{\prime}\right]<\infty$$**, this 2 ensures that** $$E\left[X X^{\prime}\right]$$ **exists.**
+2.  $$E\left[X X^{\prime}\right]<\infty$$**, this 2 ensures that** $$E\left[X X^{\prime}\right]$$ **exists.**
+
+    This matrix $$E\left[X X^{\prime}\right]$$ is called **Design Matrix**.
 3.  **There is NO PERFECT COLLINEARITY in** $$X$$ or **the matrix** $$E\left[X X^{\prime}\right]$$ **is in fact invertible.**
 
-    Since $$E\left[X X^{\prime}\right]$$ is positive semi-definite, invertibility of $$E\left[X X^{\prime}\right]$$ is equivalent to $$E\left[X X^{\prime}\right]$$ being positive definite. **This ensures there is a unique solution to** $$\beta$$ **when solving for it.**
+    Since $$E\left[X X^{\prime}\right]$$ is positive semi-definite, invertibility of $$E\left[X X^{\prime}\right]$$ is equivalent to $$E\left[X X^{\prime}\right]$$ being positive definite. **This ensures there is a unique solution to** $$\beta$$ **when solving for it.** So, this is also called the **identification condition** for $$\beta$$**.**
 
 We can talk more detail about Invertibility:
 
@@ -37,13 +39,23 @@ Let $$X$$ be such that $$E\left[X X^{\prime}\right]<\infty$$. Then $$E\left[X X^
 
 **Proof**:
 
+If there is perfect collinearity, such that $$\exist c \neq0$$ that
+
+$$
+c^{\prime} \mathbb{E}\left[X X^{\prime}\right] c=\mathbb{E}\left[c^{\prime} X X^{\prime} c\right]=\mathbb{E}\left[\left(c^{\prime} X\right)^2\right]=0 \text { with } P=1
+$$
+
+
+
+## Solving for Beta
 
 
 
 
 
 
-## Solving for beta
+
+## Estimating Beta using OLS
 
 
 
@@ -51,3 +63,48 @@ Let $$X$$ be such that $$E\left[X X^{\prime}\right]<\infty$$. Then $$E\left[X X^
 
 
 
+## Matrix Notation
+
+Define
+
+$$
+\begin{aligned} \mathbb{Y} & =\left(Y_1, \ldots, Y_n\right)^{\prime} \\ \mathbb{X} & =\left(X_1, \ldots, X_n\right)^{\prime} \\ \hat{\mathbb{Y}} & =\left(\hat{Y}_1, \ldots, \hat{Y}_n\right)^{\prime} \\ & =\mathbb{X} \hat{\beta} \\ \mathbb{U} & =\left(U_1, \ldots, \mathbb{U}_n\right)^{\prime} \\ \hat{\mathbb{U}} & =\left(\hat{U}_1, \ldots, \hat{U}_n\right)^{\prime} \\ & =\mathbb{Y}-\hat{\mathbb{Y}} \\ & =\mathbb{Y}-\mathbb{X} \hat{\beta} . \end{aligned}
+$$
+
+In this notation,
+
+$$
+\hat{\beta}=\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} \mathbb{X}^{\prime} \mathbb{Y}
+$$
+
+and may be equivalently described as the solution to
+
+$$
+\min _{b \in \mathbf{R}^{k+1}}|\mathbb{Y}-\mathbb{X} b|^2 .
+$$
+
+Hence, $$\mathbb{X} \hat{\beta}$$ is the vector in the column space of $$\mathbb{X}$$ that is the closest (in terms of Euclidean distance) to $$\mathbb{Y}$$.
+
+$$
+\mathbb{X} \hat{\beta}=\mathbb{X}\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} \mathbb{X}^{\prime} \mathbb{Y}
+$$
+
+is the orthogonal projection of $$Y$$ onto the $$((k+1)$$-dimensional) column space of $$\mathbb{X}$$.
+
+The matrix
+
+$$
+\mathbb{P}=\mathbb{X}\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} \mathbb{X}^{\prime}
+$$
+
+is known as the **Projection Matrix**. It projects a vector in $$\mathbf{R}^n$$ (such as $$\mathbb{Y}$$ ) onto the column space of $$\mathbb{X}$$.
+
+Note that $$\mathbb{P}^2=\mathbb{P}$$, which reflects the fact that projecting something that already lies in the column space of $$\mathbb{X}$$ onto the column space of $$\mathbb{X}$$ does nothing.
+
+The matrix $\mathbb{P}$ is also symmetric. The matrix
+
+$$
+\mathbb{M}=\mathbb{I}-\mathbb{P}
+$$
+
+is also a projection matrix. It projects a vector onto the $$((n-k-1)$$-dimensional) vector space orthogonal to the column space of $$\mathbb{X}$$. Hence, $$\mathbb{M X}=0$$. Note that $$\mathbb{M Y}=\hat{\mathbb{U}}$$. For this reason, $$\mathbb{M}$$ is sometimes called the **"residual maker" matrix**.
