@@ -25,7 +25,7 @@ We will make following three assumptions for this model.
     This matrix $$E\left[X X^{\prime}\right]$$ is called **Design Matrix**.
 3.  **There is NO PERFECT COLLINEARITY in** $$X$$ or **the matrix** $$E\left[X X^{\prime}\right]$$ **is in fact invertible.**
 
-    Since $$E\left[X X^{\prime}\right]$$ is positive semi-definite, invertibility of $$E\left[X X^{\prime}\right]$$ is equivalent to $$E\left[X X^{\prime}\right]$$ being positive definite. **This ensures there is a unique solution to** $$\beta$$ **when solving for it.** So, this is also called the **identification condition** for $$\beta$$**.**
+    Since $$E\left[X X^{\prime}\right]$$ is positive semi-definite, **invertibility of** $$E\left[X X^{\prime}\right]$$ **is equivalent to** $$E\left[X X^{\prime}\right]$$ **being positive definite.** **This ensures there is a unique solution to** $$\beta$$ **when solving for it.** So, this is also called the **identification condition** for $$\beta$$**.**
 
 We can talk more detail about Invertibility:
 
@@ -53,7 +53,7 @@ $$
 \begin{aligned} Z^{\prime} \mathbb{E}\left[X X^{\prime}\right] Z & =\mathbb{E}\left[Z^{\prime} X X^{\prime} Z\right]=\mathbb{E}\left[Z^{\prime} X\left(Z^{\prime} X\right)^{\prime}\right] \\ & =\mathbb{E}\left[\left(Z^{\prime} X\right)^2\right] \geqslant 0 \end{aligned}
 $$
 
-So, $$E\left[X X^{\prime}\right]$$ is always semi-positive definite, we need $$E\left[X X^{\prime}\right]>0$$ with $$P>0$$ to be positive definite.
+So, $$E\left[X X^{\prime}\right]$$ is always positive semi-definite, we need $$E\left[X X^{\prime}\right]>0$$ with $$P>0$$ to be **positive definite.**
 
 ## Solving for Beta
 
@@ -66,7 +66,7 @@ So, $$E\left[X X^{\prime}\right]$$ is always semi-positive definite, we need $$E
 
 Note that, here the $$\beta$$ we got is the linear projection coefficient.&#x20;
 
-And for $$E[U X]=0$$, we can have that $$E[U] = 0$$.
+* **And for** $$E[U X]=0$$**, we can have that** $$E[U] = 0$$**.**
 
 **Proof:**
 
@@ -76,11 +76,17 @@ $$Cov(X, U) = \mathbb{E}[XU] - \mathbb{E}[X]\mathbb{E}[U] = 0 - \mathbb{E}[X]\ma
 
 As $$\mathbb{E}[X] \neq 0$$, so we have $$\mathbb{E}[U]=0$$.
 
+* **If** $$E\left[X X^{\prime}\right]$$ **is not invertible (not positive definite), there will be more than one solution to this system of equations.** Any two solutions $$\beta$$ and $$\tilde{\beta}$$ will necessarily satisfy $$X^{\prime} \beta=X^{\prime} \tilde{\beta}$$.
+
 ## Estimating Beta using OLS
 
+Let $$(Y, X, U)$$ be as described and let $$P$$ be the marginal distribution of $$(Y, X)$$. And let $$\left(Y_1, X_1\right), \ldots,\left(Y_n, X_n\right)$$ be an i.i.d. sequence of random vectors with distribution $$P$$.
 
+A natural estimator of $$\beta=\left(E\left[X X^{\prime}\right]\right)^{-1} E[X Y]$$ is simply:
 
-
+$$
+\hat{\beta}=\left(\frac{1}{n} \sum_{1 \leq i \leq n} X_i X_i^{\prime}\right)^{-1}\left(\frac{1}{n} \sum_{1 \leq i \leq n} X_i Y_i\right)=\left(\sum_{1 \leq i \leq n} X_i X_i^{\prime}\right)^{-1}\left(\sum_{1 \leq i \leq n} X_i Y_i\right)
+$$
 
 
 
