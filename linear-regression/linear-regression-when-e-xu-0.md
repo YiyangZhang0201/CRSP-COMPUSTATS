@@ -19,7 +19,19 @@ We will make following three assumptions for this model.
 
        For $$\beta_1$$ to represent the causal effect of $$X$$ on $$Y$$, it is crucial that all other factors influencing $$Y$$ are either controlled for or are not correlated with $$X$$. The error term $$U$$ includes all these other factors. **If** $$U$$ **were correlated with** $$X$$**, it would mean that there are omitted variables that both affect** $$Y$$ **and are related to** $$X$$**, which would bias the estimation of the causal effect.** Therefore, ensuring $$E[X U]=0$$ is essential for a valid causal interpretation, as it implies that there are no omitted confounders that are correlated with $$X$$.
 2. $$E\left[X X^{\prime}\right]<\infty$$**, this 2 ensures that** $$E\left[X X^{\prime}\right]$$ **exists.**
-3.  **There is NO PERFECT COLLINEARITY in** $$X$$ or **the matrix** $$E\left[X X^{\prime}\right]$$ **s in fact invertible.**
+3.  **There is NO PERFECT COLLINEARITY in** $$X$$ or **the matrix** $$E\left[X X^{\prime}\right]$$ **is in fact invertible.**
 
-    Since $$E\left[X X^{\prime}\right]$$ is positive semi-definite, invertibility of $$E\left[X X^{\prime}\right]$$ is equivalent to $$E\left[X X^{\prime}\right]$$ being positive definite.
+    Since $$E\left[X X^{\prime}\right]$$ is positive semi-definite, invertibility of $$E\left[X X^{\prime}\right]$$ is equivalent to $$E\left[X X^{\prime}\right]$$ being positive definite. **This ensures there is a unique solution to** $$\beta$$ **when solving for it.**
+
+We can talk more detail about Invertibility:
+
+**Definition:**
+
+There is perfect collinearity or multicollinearity in $$X$$ if there exists nonzero $$c \in \mathbf{R}^{k+1}$$ such that $$P\{c^{\prime} X=0\}=1$$, (Here we treat X as a random variable.), i.e., if we can express one component of $$X$$ as a linear combination of the others.
+
+**Lemma:**
+
+Let $$X$$ be such that $$E\left[X X^{\prime}\right]<\infty$$. Then $$E\left[X X^{\prime}\right]$$ is invertible iff there is no perfect collinearity in $$X$$.
+
+**Proof**:
 
