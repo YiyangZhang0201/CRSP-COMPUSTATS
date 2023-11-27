@@ -197,11 +197,23 @@ is also a projection matrix. It projects a vector onto the $$((n-k-1)$$-dimensio
 
 **Proof**:
 
-Need to check midterm !!!!!!!!!!!!!!!!!!!!!!!!!!!
+* $$\mathbb{P}\mathbb{X} = \mathbb{X}$$:&#x20;
 
+$$
+\mathbb{P} \mathbb{X}=\mathbb{X}\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} \mathbb{X}^{\prime} \mathbb{X}=\mathbb{X}\left[\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1}\left(\mathbb{X}^{\prime} \mathbb{X}\right)\right]=\mathbb{X} \mathbb{I}=\mathbb{X}
+$$
 
+* $$\mathbb{P}^2 = \mathbb{P}$$:&#x20;
 
+$$
+\mathbb{P}^2=\left(\mathbb{X}\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} \mathbb{X}^{\prime}\right)\left(\mathbb{X}\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} \mathbb{X}^{\prime}\right)^{\prime} = \mathbb{X}\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} \mathbb{X}^{\prime}\mathbb{X}[\left(\mathbb{X}^{\prime}\mathbb{X}\right)^{-1}]^{\prime} \mathbb{X}^{\prime} = \mathbb{X}\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} \mathbb{X}^{\prime} = \mathbb{P}
+$$
 
+* $$\mathbb{P M}=0$$:
+
+$$
+\mathbb{P M}=\mathbb{P}(\mathbb{I}-\mathbb{P }) = \mathbb{P} - \mathbb{P}^2 = \mathbb{P}-\mathbb{P}=0
+$$
 
 ## Sub-Vectors of Beta
 
