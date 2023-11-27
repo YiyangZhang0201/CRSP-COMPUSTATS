@@ -201,3 +201,30 @@ Need to check midterm !!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 
+
+
+## Sub-Vectors of Beta
+
+Let $$(Y, X, U)$$ be a random vector where $$Y$$ and $$U$$ take values in $$\mathbf{R}$$ and $$X$$ takes values in $$\mathbf{R}^{k+1}$$. Let $$\beta=\left(\beta_0, \beta_1, \ldots, \beta_k\right)^{\prime} \in \mathbf{R}^{k+1}$$ such that
+
+$$
+Y=X^{\prime} \beta+U
+$$
+
+Partition $$X$$ into $$X_1$$ and $$X_2$$, where $$X_1$$ takes values in $$\mathbf{R}^{k_1}$$ and $$X_2$$ takes values in $$\mathbf{R}^{k_2}$$. Partition $$\beta$$ into $$\beta_1$$ and $$\beta_2$$ analogously. In this notation,
+
+$$
+Y=X_1^{\prime} \beta_1+X_2^{\prime} \beta_2+U
+$$
+
+Our preceding results imply that:
+
+$$
+\left(\begin{array}{l} \beta_1 \\ \beta_2 \end{array}\right)=\left[E\left(\begin{array}{l} X_1 \\ X_2 \end{array}\right)\left(X_1^{\prime} X_2^{\prime}\right)\right]^{\prime} E\left(\begin{array}{l} X_1 \\ X_2 \end{array}\right) Y
+$$
+
+$$
+\left(\begin{array}{l} \beta_1 \\ \beta_2 \end{array}\right)=\left(\begin{array}{ll} E\left[X_1 X_1^{\prime}\right] & E\left[X_1 X_2^{\prime}\right] \\ E\left[X_2 X_1^{\prime}\right] & E\left[X_2 X_2^{\prime}\right] \end{array}\right)^{-1}\left(\begin{array}{l} E\left[X_1 Y\right] \\ E\left[X_2 Y\right] \end{array}\right)
+$$
+
+Question: Can we derive formulae for $$\beta_1$$ and $$\beta_2$$ that admit some interesting interpretations?
