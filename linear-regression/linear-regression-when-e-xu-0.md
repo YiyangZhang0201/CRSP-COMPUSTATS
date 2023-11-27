@@ -227,4 +227,41 @@ $$
 \left(\begin{array}{l} \beta_1 \\ \beta_2 \end{array}\right)=\left(\begin{array}{ll} E\left[X_1 X_1^{\prime}\right] & E\left[X_1 X_2^{\prime}\right] \\ E\left[X_2 X_1^{\prime}\right] & E\left[X_2 X_2^{\prime}\right] \end{array}\right)^{-1}\left(\begin{array}{l} E\left[X_1 Y\right] \\ E\left[X_2 Y\right] \end{array}\right)
 $$
 
+This is derived from the general linear model estimation method, specifically the Ordinary Least Squares (OLS) method, under the assumption that:
+
+* &#x20;The expected value of the error term $$U$$ is zero and that $$U$$ is uncorrelated with $$X$$.
+* Existence and invertibility of matrix:
+
+$$
+\left(\begin{array}{ll} E\left[X_1 X_1^{\prime}\right] & E\left[X_1 X_2^{\prime}\right] \\ E\left[X_2 X_1^{\prime}\right] & E\left[X_2 X_2^{\prime}\right] \end{array}\right)
+$$
+
 Question: Can we derive formulae for $$\beta_1$$ and $$\beta_2$$ that admit some interesting interpretations?
+
+1. Partial Effects: The coefficients in $$\beta_1$$ and $$\beta_2$$ can be interpreted as the partial effects of the variables in $$X_1$$ and $$X_2$$ on $$Y$$, controlling for the other variables. This means that $$\beta_1$$ captures the impact of $$X_1$$ on $$Y$$ while holding $$X_2$$ constant, and vice versa for $$\beta_2$$.
+2. Multicollinearity Consideration: In cases where there is multicollinearity (i.e., high correlation) between some variables in $$X_1$$ and $$X_2$$, partitioning the regression can help understand how each group of variables uniquely contributes to explaining the variation in $$Y$$.
+3. Group-Specific Analysis: This partitioning is particularly useful when $$X_1$$ and $$X_2$$ represent distinct groups of variables, such as demographic factors versus economic indicators. It allows for the isolation of the effects of each group on $$Y$$.
+4. Interpreting in Context: The interpretation of $$\beta_1$$ and $$\beta_2$$ will highly depend on the specific context of the study. For instance, in an economic growth model, $$X_1$$ might include labor and capital variables, while $$X_2$$ includes policy variables. The coefficients would then tell us about the distinct impacts of these groups on economic growth.
+5. Statistical Significance: It's important to evaluate the statistical significance of the estimated coefficients in $$\beta_1$$ and $$\beta_2$$ to determine if the observed relationships are not due to random chance.
+6. Estimation Challenges: If $$X_1$$ and $$X_2$$ are highly correlated, the inverse of the matrix in the formula may be difficult to compute accurately, leading to estimation problems. This is a common issue in models with multicollinearity.
+
+### Result Based on BLP
+
+BLP: for a random variable $$A$$ and a random vector $$B$$, denote by $$\operatorname{BLP}(A \mid B)$$ the best linear predictor of $$A$$ given $$B$$, i.e.
+
+$$
+\operatorname{BLP}(A \mid B) \equiv B^{\prime}\left(E\left[B B^{\prime}\right]\right)^{-1} E[B A] .
+$$
+
+If $$A$$ is a random vector, then define $$\mathrm{BLP}(A \mid B)$$ component-wise.
+
+And we also define $$\tilde{A}=A-\operatorname{BLP}(A \mid B)$$.
+
+**Now, come back to our problem:** $$Y=X_1^{\prime} \beta_1+X_2^{\prime} \beta_2+U$$
+
+Define $$\tilde{Y}=Y-\operatorname{BLP}\left(Y \mid X_2\right)$$ and $$\tilde{X}_1=X_1-\operatorname{BLP}\left(X_1 \mid X_2\right)$$. Consider the linear regression
+
+$$
+\tilde{Y}=\tilde{X}_1^{\prime} \tilde{\beta}_1+\tilde{U} \text { where } E\left[\tilde{X}_1 \tilde{U}\right]=0
+$$
+
