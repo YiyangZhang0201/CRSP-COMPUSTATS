@@ -94,6 +94,53 @@ $$
 \min _{b \in \mathbf{R}^{k+1}} \frac{1}{n} \sum_{1 \leq i \leq n}\left(Y_i-X_i^{\prime} b\right)^2
 $$
 
+Here:
+
+* $$\hat{\beta}$$ is a random variable, since it is $$f\left(X_i, Y_i\right)$$
+* By Law of Large Number: $$\frac{1}{n} \sum_{1 \leqslant i \leqslant n} X_i X_i^{\prime} \stackrel{P}{\longrightarrow} \mathbb{E}\left[X_i X_i^{\prime}\right]$$
+* By Law of Large Number: $$\frac{1}{n} \sum_{1 \leqslant i \leqslant n} X_i Y_i^{\prime} \stackrel{P}{\longrightarrow} \mathbb{E}\left[X_i Y_i^{\prime}\right]$$
+* Note that for more efficient estimator $$\hat{\beta}$$, its Variance is smaller.
+
+**Proof:**
+
+Define Objective Function:
+
+$$
+Q(b)=\frac{1}{n} \sum_{i=1}^n\left(Y_i-X_i^{\prime} b\right)^2
+$$
+
+We take the derivative of the objective function w.r.t. $$b$$ and get the FOC:
+
+$$
+\frac{\partial Q}{\partial b}=-\frac{2}{n} \sum_{i=1}^n X_i\left(Y_i-X_i^{\prime} b\right)=0
+$$
+
+Then by FOC, we have that:
+
+$$
+\begin{aligned} & -\frac{2}{n} \sum_{i=1}^n X_i\left(Y_i-X_i^{\prime} b\right)=0 \\ & \sum_{i=1}^n X_i Y_i-\sum_{i=1}^n X_i X_i^{\prime} b=0 \end{aligned}
+$$
+
+Now, we rearrange to solve for $$b$$ :
+
+$$
+\begin{aligned} & \sum_{i=1}^n X_i X_i^{\prime} b=\sum_{i=1}^n X_i Y_i \\ & \left(\sum_{i=1}^n X_i X_i^{\prime}\right) b=\sum_{i=1}^n X_i Y_i \end{aligned}
+$$
+
+Dividing by $$n$$ to align with your provided formulation:
+
+$$
+\left(\frac{1}{n} \sum_{i=1}^n X_i X_i^{\prime}\right) b=\frac{1}{n} \sum_{i=1}^n X_i Y_i
+$$
+
+Finally, solving for $$b$$, the result will be our $$\hat{\beta}$$:
+
+$$
+\hat{\beta} = b=\left(\frac{1}{n} \sum_{i=1}^n X_i X_i^{\prime}\right)^{-1}\left(\frac{1}{n} \sum_{i=1}^n X_i Y_i\right)
+$$
+
+Now we finished the proof.
+
 Note that we can also apply weight to the above formula to make this a **weighted least squares (WLS)** estimator.&#x20;
 
 $$
@@ -107,7 +154,7 @@ So, we have that OLS is a special case of WLS. In this case, $$W_i$$s are equal 
 Define
 
 $$
-\begin{aligned} \mathbb{Y} & =\left(Y_1, \ldots, Y_n\right)^{\prime} \\ \mathbb{X} & =\left(X_1, \ldots, X_n\right)^{\prime} \\ \hat{\mathbb{Y}} & =\left(\hat{Y}_1, \ldots, \hat{Y}_n\right)^{\prime} \\ & =\mathbb{X} \hat{\beta} \\ \mathbb{U} & =\left(U_1, \ldots, \mathbb{U}_n\right)^{\prime} \\ \hat{\mathbb{U}} & =\left(\hat{U}_1, \ldots, \hat{U}_n\right)^{\prime} \\ & =\mathbb{Y}-\hat{\mathbb{Y}} \\ & =\mathbb{Y}-\mathbb{X} \hat{\beta} . \end{aligned}
+\begin{aligned} \mathbb{Y} & =\left(Y_1, \ldots, Y_n\right)^{\prime} \\ \mathbb{X} & =\left(X_1, \ldots, X_n\right)^{\prime} \\ \hat{\mathbb{Y}} & =\left(\hat{Y}_1, \ldots, \hat{Y}_n\right)^{\prime} =\mathbb{X} \hat{\beta} \\ \mathbb{U} & =\left(U_1, \ldots, \mathbb{U}_n\right)^{\prime} \\ \hat{\mathbb{U}} & =\left(\hat{U}_1, \ldots, \hat{U}_n\right)^{\prime} \\ & =\mathbb{Y}-\hat{\mathbb{Y}}  =\mathbb{Y}-\mathbb{X} \hat{\beta} . \end{aligned}
 $$
 
 In this notation,
@@ -149,4 +196,8 @@ $$
 is also a projection matrix. It projects a vector onto the $$((n-k-1)$$-dimensional) vector space orthogonal to the column space of $$\mathbb{X}$$. Hence, $$\mathbb{M X}=0$$. Note that $$\mathbb{M Y}=\hat{\mathbb{U}}$$. For this reason, $$\mathbb{M}$$ is sometimes called the **"residual maker" matrix**.
 
 **Proof**:
+
+Need to check midterm !!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
 
