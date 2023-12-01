@@ -336,37 +336,42 @@ $$
 
 **Proof:**
 
-As $$X_2$$ is a constant,&#x20;
+As $$X_2$$ is a constant, we define $$X_2=1$$ for simplicity. In this way, we have $$Y=\beta_2+\beta_1 X_1+U$$.
 
+Therefore, we use $$X_2$$ to estimate $$X_1$$ and $$Y$$, we can have that:
 
+* $$X_1 = C + e$$, to get the BLP of $$X_1$$, we minimize over $$\min _C E\left(X_1-C\right)^2$$ $$\Rightarrow$$ FOC: $$-2 E\left(X_1-C\right)=0$$ $$\Rightarrow$$ $$C=E[X_1]$$
+* $$Y=D+e$$, to get the BLP of $$Y$$, we minimize over $$\min _D E\left(Y-D\right)^2 \Rightarrow$$ FOC: $$-2 E\left(Y-D\right)=0 \Rightarrow D=E\left[Y\right]$$
 
+In this way, we can get that $$\tilde{Y}=Y-E[Y]$$ and $$\tilde{X}_1=X_1-E\left[X_1\right]$$.
 
+Now, based on the interpretation we shown above, we can have that:
 
+$$
+\tilde{Y}=\beta \tilde{X}_1+\epsilon
+$$
 
+So, in order to solve the $$\beta$$, we have that we need to minimize over $$E_{\beta}(\tilde{Y}-\beta \tilde{X}_1)^2$$
 
+The FOC for this problem is $$E(\tilde{Y}-\beta \tilde{X}_1) \tilde{X}_1=0$$ $$\Rightarrow$$ $$E(\tilde{Y} \tilde{X}_1)=\beta E(\tilde{X}_1 \tilde{X}_1)$$
 
+So, we got&#x20;
 
+$$
+\beta=\frac{E\left(\tilde{Y} \tilde{X}_1\right)}{E\left(\tilde{X}_1^2\right)}
+$$
 
+Take $$\tilde{Y}=Y-E[Y]$$ and $$\tilde{X}_1=X_1-E\left[X_1\right]$$ into this equation, we have $$\beta=\left(E\left[\left(X_1-E\left[X_1\right]\right)^2\right]\right)^{-1} E\left[\left(X_1-E X_1\right)(Y-E[Y])\right]=\frac{\operatorname{Cov}\left[X_1, Y\right]}{\operatorname{Var}\left[X_1\right]}$$ being proved.
 
+Now, we start to check the individual elements in vector $$\beta$$:
 
+**If we use our formula to interpret the coefficient** $$\beta_j$$**, we obtain:**
 
+$$
+\beta_j=\frac{\operatorname{Cov}\left[\tilde{X}_j, Y\right]}{\operatorname{Var}\left[\tilde{X}_j\right]} .
+$$
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+$$\Rightarrow$$ each coefficient in a multivariate regression is the bivariate slope coefficient for the corresponding regressor, after "partialling out" all the other variables in the model.
 
 ### Estimating Sub-Vectors of Beta
 
