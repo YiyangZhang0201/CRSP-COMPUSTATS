@@ -331,7 +331,7 @@ Above equaation can be interpreted like this: $$\beta_1$$ in the linear regressi
 Take $$X_2=$$ constant and $$X_1 \in \mathbf{R}$$. Then $$\tilde{Y}=Y-E[Y]$$ and $$\tilde{X}_1=X_1-E\left[X_1\right]$$. Hence,
 
 $$
-\beta=\left(E\left[\left(X_1-E\left[X_1\right]\right)^2\right]\right)^{-1} E\left[\left(X_1-E X_1\right)(Y-E[Y])\right]=\frac{\operatorname{Cov}\left[X_1, Y\right]}{\operatorname{Var}\left[X_1\right]}
+\beta_1=\left(E\left[\left(X_1-E\left[X_1\right]\right)^2\right]\right)^{-1} E\left[\left(X_1-E X_1\right)(Y-E[Y])\right]=\frac{\operatorname{Cov}\left[X_1, Y\right]}{\operatorname{Var}\left[X_1\right]}
 $$
 
 **Proof:**
@@ -348,20 +348,20 @@ In this way, we can get that $$\tilde{Y}=Y-E[Y]$$ and $$\tilde{X}_1=X_1-E\left[X
 Now, based on the interpretation we shown above, we can have that:
 
 $$
-\tilde{Y}=\beta \tilde{X}_1+\epsilon
+\tilde{Y}=\beta_ 1\tilde{X}_1+\epsilon
 $$
 
-So, in order to solve the $$\beta$$, we have that we need to minimize over $$E_{\beta}(\tilde{Y}-\beta \tilde{X}_1)^2$$
+So, in order to solve the $$\beta_1$$, we have that we need to minimize over $$E_{\beta}(\tilde{Y}-\beta_1 \tilde{X}_1)^2$$
 
-The FOC for this problem is $$E(\tilde{Y}-\beta \tilde{X}_1) \tilde{X}_1=0$$ $$\Rightarrow$$ $$E(\tilde{Y} \tilde{X}_1)=\beta E(\tilde{X}_1 \tilde{X}_1)$$
+The FOC for this problem is $$E(\tilde{Y}-\beta _1\tilde{X}_1) \tilde{X}_1=0$$ $$\Rightarrow$$ $$E(\tilde{Y} \tilde{X}_1)=\beta _1E(\tilde{X}_1 \tilde{X}_1)$$
 
 So, we got&#x20;
 
 $$
-\beta=\frac{E\left(\tilde{Y} \tilde{X}_1\right)}{E\left(\tilde{X}_1^2\right)}
+\beta_1=\frac{E\left(\tilde{Y} \tilde{X}_1\right)}{E\left(\tilde{X}_1^2\right)}
 $$
 
-Take $$\tilde{Y}=Y-E[Y]$$ and $$\tilde{X}_1=X_1-E\left[X_1\right]$$ into this equation, we have $$\beta=\left(E\left[\left(X_1-E\left[X_1\right]\right)^2\right]\right)^{-1} E\left[\left(X_1-E X_1\right)(Y-E[Y])\right]=\frac{\operatorname{Cov}\left[X_1, Y\right]}{\operatorname{Var}\left[X_1\right]}$$ being proved.
+Take $$\tilde{Y}=Y-E[Y]$$ and $$\tilde{X}_1=X_1-E\left[X_1\right]$$ into this equation, we have $$\beta_1=\left(E\left[\left(X_1-E\left[X_1\right]\right)^2\right]\right)^{-1} E\left[\left(X_1-E X_1\right)(Y-E[Y])\right]=\frac{\operatorname{Cov}\left[X_1, Y\right]}{\operatorname{Var}\left[X_1\right]}$$ being proved.
 
 Now, we start to check the individual elements in vector $$\beta$$:
 
@@ -385,13 +385,11 @@ We use $$\hat{\beta}=\left(\hat{\beta}_1^{\prime}, \hat{\beta}_2^{\prime}\right)
 
 We now derive estimation counterparts to the previous results about solving for sub-vectors of $$\beta$$. That is, $$\hat{\beta}_1$$ can also be obtained from a "residualized" regression.
 
-Here is an example:
+As we can have that $$\tilde{Y}=\tilde{X}_1^{\prime}\beta_1 +\epsilon$$,  just treat this residualized regression as an ordinary regression we have shown before. Using OLS to get the best estimator of $$\beta_1$$
 
-
-
-
-
-
+$$
+\hat{\beta}_1=\left(\frac{1}{n} \sum_{1 \leq i \leq n} \tilde{X}_{1 i} \tilde{X}_{1 i}{ }^{\prime}\right)^{-1}\left(\frac{1}{n} \sum_{1 \leq i \leq n} \tilde{X}_{1 i} \tilde{Y}_i\right)=\left(\sum_{1 \leq i \leq n} \tilde{X}_{1 i} \tilde{X}_{1 i}{ }^{\prime}\right)^{-1}\left(\sum_{1 \leq i \leq n} \tilde{X}_{1 i} \tilde{Y}_i\right)
+$$
 
 ### Matrix Form
 
