@@ -23,9 +23,35 @@ And the properties we will discuss next are:
 
 ## Bias
 
-**Under the first assumption,** $$E[U \mid X]=0$$ **(i.e.,** $$E[Y \mid X]=X^{\prime} \beta$$**) it follows that** $$E[\hat{\beta}]=\beta$$
+### Unbiasedness
+
+Under the first assumption, $$E[U \mid X]=0$$ (i.e., $$E[Y \mid X]=X^{\prime} \beta$$) it follows that $$E[\hat{\beta}]=\beta$$
 
 
+
+
+
+
+
+### Biasedness from Omitted Variable
+
+If $$\mathbb{E}[\hat{\beta}] \neq \beta$$, then $$\hat{\beta}$$ is biased, $$\text{bias}(\hat{\beta}) = \mathbb{E}[\hat{\beta}] - \beta$$, this may because of the omitted variable (some related variable).
+
+* If $$\operatorname{bias}(\hat{\beta}) > 0$$: $$\hat{\beta}$$ is overestimated.
+* If $$\operatorname{bias}(\hat{\beta}) < 0$$: $$\hat{\beta}$$ is underestimated.
+
+For example, in a regression about factors that affects wage:&#x20;
+
+$$
+\text { wage }=\beta_0+\beta_1 \text { edu}+u
+$$
+
+We regressed wage on the education level (edu). However, there are other factors that may not be independent of the education level that also affects wage, like ability, motivation, .etc. So in this example, we have $$\operatorname{Cov}(e d u, u) \neq 0$$, therefore, this will lead to the biased estimation of $$\beta_1$$.
+
+To calculate the omitted variable bias, we can use the following steps:
+
+1. Build a long regression:
+2. Build a short regression:&#x20;
 
 ## Gauss-Markov Theorem
 
