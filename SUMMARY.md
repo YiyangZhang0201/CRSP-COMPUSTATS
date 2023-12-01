@@ -6,6 +6,7 @@
   * [Interpretations of Linear Regression](linear-regression/interpretations-of-linear-regression.md)
   * [Linear Regression When E\[XU\]=0](linear-regression/linear-regression-when-e-xu-0.md)
   * [Properties of LS](linear-regression/properties-of-ls.md)
+  * [Measures of Fit](linear-regression/measures-of-fit.md)
   * [Inference on Linear Models](linear-regression/inference-on-linear-models.md)
 * [IV Method](iv-method/README.md)
   * [Linear Regression When E\[XU\]!=0](iv-method/linear-regression-when-e-xu-0.md)
