@@ -375,11 +375,31 @@ $$\Rightarrow$$ each coefficient in a multivariate regression is the bivariate s
 
 ### Estimating Sub-Vectors of Beta
 
+Partition $$X$$ and $$\beta$$ as before and consider
+
+$$
+Y=X_1^{\prime} \beta_1+X_2^{\prime} \beta_2+U
+$$
+
+We use $$\hat{\beta}=\left(\hat{\beta}_1^{\prime}, \hat{\beta}_2^{\prime}\right)^{\prime}$$ to denote the LS estimator of $$\beta$$ in a regression of $$Y$$ on $$X$$.
+
+We now derive estimation counterparts to the previous results about solving for sub-vectors of $$\beta$$. That is, $$\hat{\beta}_1$$ can also be obtained from a "residualized" regression.
+
+Here is an example:
 
 
 
 
 
+
+
+### Matrix Form
+
+Let $$\mathbb{X}_1=\left(X_{1,1}, \ldots, X_{1, n}\right)^{\prime}$$ and $$\mathbb{X}_2=\left(X_{2,1}, \ldots, X_{2, n}\right)^{\prime}$$.
+
+Denote by $$\mathbb{P}_1$$ the projection matrix onto the column space of $$\mathbb{X}_1$$ and $$\mathbb{P}_2$$ the projection matrix onto the column space of $$\mathbb{X}_2$$.
+
+Define $$\mathbb{M}_1=\mathbb{I}-\mathbb{P}_1$$ and $$\mathbb{M}_2=\mathbb{I}-\mathbb{P}_2$$
 
 
 
