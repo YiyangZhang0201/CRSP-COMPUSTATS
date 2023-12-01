@@ -328,13 +328,15 @@ Above equaation can be interpreted like this: $$\beta_1$$ in the linear regressi
 
 **This formalizes the common description of** $$\beta_1$$ **as the "effect" of** $$X_1$$ **on** $$Y$$ **after  "controlling for** $$X_2$$**. "**
 
-He
+Take $$X_2=$$ constant and $$X_1 \in \mathbf{R}$$. Then $$\tilde{Y}=Y-E[Y]$$ and $$\tilde{X}_1=X_1-E\left[X_1\right]$$. Hence,
 
+$$
+\beta=\left(E\left[\left(X_1-E\left[X_1\right]\right)^2\right]\right)^{-1} E\left[\left(X_1-E X_1\right)(Y-E[Y])\right]=\frac{\operatorname{Cov}\left[X_1, Y\right]}{\operatorname{Var}\left[X_1\right]}
+$$
 
+**Proof:**
 
-
-
-
+As $$X_2$$ is a constant,&#x20;
 
 
 
