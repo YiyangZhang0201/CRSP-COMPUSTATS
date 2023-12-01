@@ -23,6 +23,8 @@ And the properties we will discuss next are:
 
 ## Bias
 
+**Under the first assumption,** $$E[U \mid X]=0$$ **(i.e.,** $$E[Y \mid X]=X^{\prime} \beta$$**) it follows that** $$E[\hat{\beta}]=\beta$$
+
 
 
 ## Gauss-Markov Theorem
