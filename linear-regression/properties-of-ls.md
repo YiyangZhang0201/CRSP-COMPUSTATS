@@ -27,11 +27,40 @@ And the properties we will discuss next are:
 
 Under the first assumption, $$E[U \mid X]=0$$ (i.e., $$E[Y \mid X]=X^{\prime} \beta$$) it follows that $$E[\hat{\beta}]=\beta$$
 
+**Proof:**
 
+Based on the OLS formula, we have that:&#x20;
 
+$$
+\hat{\beta}=\left(\sum_{i=1}^n X_i X_i^{\prime}\right)^{-1}\left(\sum_{i=1}^n X_i Y_i\right)
+$$
 
+Take $$Y_i = X_i^{\prime}\beta + u_i$$ into our formula, we can have that:
 
+$$
+\begin{aligned} \hat{\beta} & =\left(\sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \sum_{i=1}^n X_i\left(X_i^{\prime} \beta+u_i\right) \\ & =\left(\sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \sum_{i=1}^n X_i X_i^{\prime} \beta+\left(\sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \sum_{i=1}^n X_i u_i \\ & =\beta+\left(\sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \sum_{i=1}^n X_i u_i \end{aligned}
+$$
 
+As we can have that $$E[\hat{\beta}]=E[E[\hat{\beta} \mid X]]$$, we can have the following proof:
+
+$$
+\mathbb{E}\left[\hat{\beta} \mid X_1, \cdots X_n\right]=\beta+\left(\sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \sum_{i=1}^n X_i \mathbb{E}[u_i \mid X_1, \cdots ,X_n]
+$$
+
+Note that:&#x20;
+
+* If $$X_i$$s are i.i.d, then $$\mathbb{E}\left[u_i \mid X_1, \cdots, X_n\right] = \mathbb{E}[u_i \mid X_i]$$. Otherwise, this equation may not hold.
+* Both our assupmtion $$E[U \mid X]=0$$ and $$\mathbb{E}\left[u_i \mid X_1, \cdots, X_n\right]$$ can be a sufficient condition for us to finish the proof.
+
+As $$\mathbb{E}\left[u_i \mid X_1, \cdots, X_n\right] = \mathbb{E}\left[u_i \mid X_i\right]=0$$, we can have that $$\mathbb{E}\left[\hat{\beta} \mid X_1, \cdots X_n\right]=\beta$$
+
+So we can have that:&#x20;
+
+$$
+E[\hat{\beta}]=E[E[\hat{\beta} \mid X]] = E[\beta] = \beta
+$$
+
+Now we finished the proof for unbiasedness.
 
 ### Biasedness from Omitted Variable
 
@@ -66,7 +95,11 @@ $$
 
 Note that:
 
-*
+* $$\Gamma_{12}$$ can be defined as $$X_2 = X_1^{\prime} \Gamma_{12}+e$$, which is the projection of $$X_2$$ on $$X_1$$. However,  in the real world, it is very hard to estimate because we usually cannot observe omitted variables.
+* As $$X_1$$ stands for education, and $$X_2$$ stands for ability or motivation, based on the real world experience, we can easily conclude that:
+  * Better ability/motivation are more likely leads to higher wage: $$\beta_2 > 0$$ is highly likely.
+  * Better ability/motivation are more likely leads to higher education: $$\Gamma_{12} > 0$$ is highly likely.
+* Therefore, we have that the bias we got from the omitted variable: $$\Gamma_{12} \beta_2$$ is highly likely to be greater than 0. Therefore, in our short regression, we are very likely overestimated the effect of education on wage.
 
 ## Gauss-Markov Theorem
 
