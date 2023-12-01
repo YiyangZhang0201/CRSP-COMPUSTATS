@@ -29,6 +29,8 @@ Under the first assumption, $$E[U \mid X]=0$$ (i.e., $$E[Y \mid X]=X^{\prime} \b
 
 **Proof:**
 
+$$E[X U]=E[E[XU \mid X]] = E[XE[U \mid X]] =0 \Rightarrow E[U \mid X] =0$$
+
 Based on the OLS formula, we have that:&#x20;
 
 $$
@@ -107,7 +109,36 @@ Note that:
 
 ## Consistency
 
+$$
+\text { Under our three main assumptions, } \hat{\beta} \stackrel{P}{\rightarrow} \beta \text { as } n \rightarrow \infty \text {. }
+$$
 
+**Proof:**
+
+Based on the OLS formula, we can have that:
+
+$$
+\hat{\beta}=\left(\frac{1}{n} \sum_{1 \leq i \leq n} X_i X_i^{\prime}\right)^{-1}\left(\frac{1}{n} \sum_{1 \leq i \leq n} X_i Y_i\right)
+$$
+
+Take $$Y_i = X_i^{\prime}\beta + u_i$$ into our formula, we can have that:
+
+$$
+\begin{aligned} \hat{\beta} & =\left(\frac{1}{n}\sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \frac{1}{n}\sum_{i=1}^n X_i\left(X_i^{\prime} \beta+u_i\right) \\ & =\left(\frac{1}{n}\sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \frac{1}{n}\sum_{i=1}^n X_i X_i^{\prime} \beta+\left(\frac{1}{n}\sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \frac{1}{n}\sum_{i=1}^n X_i u_i \\ & =\beta+\left(\frac{1}{n}\sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \left(\frac{1}{n}\sum_{i=1}^n X_i u_i\right) \end{aligned}
+$$
+
+Now, we denote $$B_n = \left(\frac{1}{n}\sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \left(\frac{1}{n}\sum_{i=1}^n X_i u_i\right)$$, then we can have that, as $$X_i$$s are i.i.d. and based on the LLN:
+
+* $$\left(\frac{1}{n}\sum_{i=1}^n X_i X_i^{\prime}\right)^{-1}$$ $$\stackrel{P}{\rightarrow}$$ $$\mathbb{E}\left[X_i X_i^{\prime}\right]$$, which is less than $$\infin$$
+* $$\frac{1}{n} \sum_{i=1}^n X_i u_i$$ $$\stackrel{P}{\rightarrow}$$ $$\mathbb{E}\left[\begin{array}{lll}X_iu_i\end{array}\right]=0$$
+
+Therefore, we can have that :
+
+$$
+\begin{aligned} p \lim _{n \rightarrow \infty} \hat{\beta} & =\beta+p\lim _{n \rightarrow \infty} B_n \\ & =\beta+\mathbb{E}\left[X_i X_i^{\prime}\right] \mathbb{E}\left[X_i u_i\right] \\ & =\beta+0=\beta \end{aligned}
+$$
+
+Now we finished our proof for consistency.
 
 ## Asymptotic Normality
 
