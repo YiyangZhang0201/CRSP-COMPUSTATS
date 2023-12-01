@@ -50,8 +50,23 @@ We regressed wage on the education level (edu). However, there are other factors
 
 To calculate the omitted variable bias, we can use the following steps:
 
-1. Build a long regression:
-2. Build a short regression:&#x20;
+1. Build a long regression: $$Y=X_1^{\prime} \beta_1+X_2^{\prime} \beta_2+e$$, where $$\mathbb{E}\left[X_1 e\right]=0, \mathbb{E}\left[X_2 e\right]=0$$
+2. Build a short regression: $$Y=X_1^{\prime} \gamma_1+u$$, where $$\mathbb{E}\left[X_1 u\right]=0$$
+3. By the formula of OLS, we have that:
+
+$$
+\begin{aligned} \gamma_1& =\mathbb{E}\left[X_1X_1^{\prime}\right]^{-1} \mathbb{E}\left[X_1Y\right] \\ & =\mathbb{E}\left[X_1 X_1^{\prime}\right]^{-1} \mathbb{E}\left[X_1\left(X_1^{\prime} \beta_1+X_2^{\prime} \beta_2+e\right)\right] \\ & =\beta_1+\left[\mathbb{E}\left[X_1 X_1^{\prime}\right]^{-1} \mathbb{E}\left[X_1 X_2^{\prime}\right] \beta_2\right]+\left[\mathbb{E}\left[X_1 X_1^{\prime}\right]^{-1} \mathbb{E}\left[X_1 e\right]\right] \end{aligned}
+$$
+
+As $$\mathbb{E}\left[X_1 e\right]=0$$, and denote $$\Gamma_{12}$$ as $$\mathbb{E}\left[X_1 X_1^{\prime}\right]^{-1} \mathbb{E}\left[X_1 X_2^{\prime}\right]$$, we can have that:
+
+$$
+\gamma_1 =\beta_1+\Gamma_{12} \beta_2
+$$
+
+Note that:
+
+*
 
 ## Gauss-Markov Theorem
 
