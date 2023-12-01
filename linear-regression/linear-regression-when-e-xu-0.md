@@ -399,21 +399,15 @@ Let $$\mathbb{X}_1=\left(X_{1,1}, \ldots, X_{1, n}\right)^{\prime}$$ and $$\math
 
 Denote by $$\mathbb{P}_1$$ the projection matrix onto the column space of $$\mathbb{X}_1$$ and $$\mathbb{P}_2$$ the projection matrix onto the column space of $$\mathbb{X}_2$$.
 
-Define $$\mathbb{M}_1=\mathbb{I}-\mathbb{P}_1$$ and $$\mathbb{M}_2=\mathbb{I}-\mathbb{P}_2$$
+Define Residual Makers $$\mathbb{M}_1=\mathbb{I}-\mathbb{P}_1$$ and $$\mathbb{M}_2=\mathbb{I}-\mathbb{P}_2$$.&#x20;
 
+* Apply $$\mathbb{M}_2$$ to $$\mathbb{X}_1$$ to get the residualized version of $$\mathbb{X}_1$$: $$\tilde{\mathbb{X}}_1=\mathbb{M}_2 \mathbb{X}_1$$
+* Apply $$\mathbb{M}_2$$ to $$\mathbb{Y}$$ to get the residualized version of $$\mathbb{Y}$$: $$\tilde{\mathbb{Y}}=\mathbb{M}_2 \mathbb{Y}$$
 
+The regression model now becomes $$\widetilde{\mathbb{Y}}=\beta_1 \widetilde{\mathbb{X}}_1+\epsilon$$, where $$\epsilon$$ is the error term.
 
+Then use Ordinary Least Squares (OLS) to estimate $$\beta_1$$. The formula for $$\hat{\beta}_1$$ is similar to before:&#x20;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+$$
+\hat{\beta}_1=\left(\tilde{\mathbb{X}}_1^{\prime} \tilde{\mathbb{X}}_1\right)^{-1} \tilde{\mathbb{X}}_1^{\prime} \widetilde{\mathbb{Y}}
+$$
