@@ -277,3 +277,116 @@ $$
 \tilde{Y}=\tilde{X}_1^{\prime} \tilde{\beta}_1+\tilde{U} \text { where } E\left[\tilde{X}_1 \tilde{U}\right]=0
 $$
 
+as for example, in the second interpretation of the linear regression model: Best Linear Approximation that we described before, then we can have that:
+
+$$
+\tilde{\beta}_1=\left(E\left[\tilde{X}_1 \tilde{X}_1^{\prime}\right]\right)^{-1} E\left[\tilde{X}_1 \tilde{Y}\right]=\beta_1
+$$
+
+**Proof:**
+
+First we can have the following result based on the definition of $$\tilde{Y}$$ and $$\tilde{X}_1$$:
+
+* $$Y=X_2^{\prime} \gamma+U_2$$ $$\Rightarrow$$ $$\mathbb{E}\left[X_2 U_2\right]=0$$ $$\Rightarrow$$ $$U_2=\tilde{Y}$$$$=Y-X_2^{\prime} \gamma$$
+* $$X_1 = X_2^{\prime} \eta+e$$ $$\Rightarrow$$ $$\mathbb{E}\left[X_2 e\right]=0$$ $$\Rightarrow$$ $$e=\tilde{X}_1$$$$\Rightarrow$$ $$\mathbb{E}\left[X_2 \tilde{X}_1^{\prime}\right]=0$$
+
+Above can be got because $$U_2$$ and $$e$$ are projections from linear regression models.
+
+For formula $$\tilde{\beta}_1=\left(E\left[\tilde{X}_1 \tilde{X}_1^{\prime}\right]\right)^{-1} E\left[\tilde{X}_1 \tilde{Y}\right]$$,  we will first separate the right-hand side $$E\left[\tilde{X}_1 \tilde{Y}\right]$$
+
+$$E\left[\tilde{X}_1 \tilde{Y}\right] = E\left[\tilde{X}_1 (Y-X_2^{\prime} \gamma)\right]$$$$= E\left[\tilde{X}_1 Y\right]-E\left[\tilde{X}_1X_2^{\prime} \gamma\right]$$
+
+Since $$\tilde{X}_1$$ can be viewed as a scaler, we can have that as $$\mathbb{E}\left[X_2 \tilde{X}_1^{\prime}\right]=0$$, then $$E\left[\tilde{X}_1 X_2^{\prime} \gamma\right] = E\left[X_2\tilde{X}_1^{\prime}  \gamma\right] = E\left[X_2\tilde{X}_1^{\prime}  \right]\gamma = 0$$
+
+Now we have that: $$E\left[\tilde{X}_1 \tilde{Y}\right]=E\left[\tilde{X}_1 Y\right]$$, take the original formula $$Y=X_1^{\prime} \beta_1+X_2^{\prime} \beta_2+U$$ inside, we can have that:&#x20;
+
+* $$U \perp X_1$$, and $$U \perp X_2$$, since we are under the interpretation of the Best Linear Approximation.
+* $$E[\tilde{X}_1 Y] = E[\tilde{X}_1 (X_1^{\prime} \beta_1+X_2^{\prime} \beta_2+U)]$$$$=E\left[\tilde{X}_1X_1^{\prime} \right]\beta_1+E\left[\tilde{X}_1X_2^{\prime}\right] \beta_2+E\left[\tilde{X}_1U\right]$$
+  * As we have shown $$E\left[\tilde{X}_1 X_2^{\prime}\right] =0$$ $$\Rightarrow$$ $$E\left[\tilde{X}_1 X_2^{\prime}\right] \beta_2=0$$
+  * As $$U \perp X_1$$ $$\Rightarrow$$ $$E\left[\tilde{X}_1 U\right]=0$$
+
+Now we got that $$E\left[\tilde{X}_1 \tilde{Y}\right]=E\left[\tilde{X}_1 Y\right]=E\left[\tilde{X}_1 X_1^{\prime}\right] \beta_1$$, now for $$E\left[\tilde{X}_1 X_1^{\prime}\right]$$, we can have that:
+
+$$E\left[\tilde{X}_1 X_1^{\prime}\right] = E\left[\tilde{X}_1 (X_2^{\prime} \eta+e)^{\prime}\right] = E\left[\tilde{X}_1 X_2^{\prime} \eta\right]+E\left[\tilde{X}_1e^{\prime}\right]$$
+
+* For $$E\left[\tilde{X}_1 X_2^{\prime} \eta\right]$$, as $$e \perp X_2^{\prime} \eta$$ because of the projection, we have $$\tilde{X}_1 = e \perp X_2^{\prime} \eta$$, so $$E\left[\tilde{X}_1 X_2^{\prime} \eta\right]=0$$
+* For $$E\left[\tilde{X}_1 e^{\prime}\right]$$, as $$e=\tilde{X}_1$$, we have that $$E\left[\tilde{X}_1 e^{\prime}\right] = E\left[\tilde{X}_1 \tilde{X}_1^{\prime}\right]$$
+
+Now we got that $$E\left[\tilde{X}_1 \tilde{Y}\right]=E\left[\tilde{X}_1 Y\right]=E\left[\tilde{X}_1 X_1^{\prime}\right] \beta_1 = E\left[\tilde{X}_1 \tilde{X}_1^{\prime}\right]\beta_1$$
+
+Take this into the formula of $$\tilde{\beta}_1$$, we can have that:
+
+$$
+\tilde{\beta}_1=\left(E\left[\tilde{X}_1 \tilde{X}_1^{\prime}\right]\right)^{-1} E\left[\tilde{X}_1 \tilde{Y}\right] = \left(E\left[\tilde{X}_1 \tilde{X}_1^{\prime}\right]\right)^{-1}E\left[\tilde{X}_1 \tilde{X}_1^{\prime}\right]\beta_1＝\mathbb{I}\beta_1=\beta_1
+$$
+
+Now we successfully proved the above equation.
+
+### Interpretation
+
+Above equaation can be interpreted like this: $$\beta_1$$ in the linear regression of $$Y$$ on $$X_1$$ and $$X_2$$ is equal to the coefficient in a linear regression of the error term from a linear regression of $$Y$$ on $$X_2$$ on the error terms from a linear regression of the components of $$X_1$$ on $$X_2$$.
+
+**This formalizes the common description of** $$\beta_1$$ **as the "effect" of** $$X_1$$ **on** $$Y$$ **after  "controlling for** $$X_2$$**. "**
+
+He
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Estimating Sub-Vectors of Beta
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
