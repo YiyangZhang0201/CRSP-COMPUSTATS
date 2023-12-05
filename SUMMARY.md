@@ -11,6 +11,7 @@
 * [IV Method](iv-method/README.md)
   * [Linear Regression When E\[XU\]!=0](iv-method/linear-regression-when-e-xu-0.md)
   * [Instrumental Variables](iv-method/instrumental-variables.md)
+  * [TSLS Estimator](iv-method/tsls-estimator.md)
 * [Differences in Differences](differences-in-differences.md)
 * [Synthetic Control](synthetic-control.md)
 * [Nonparametric Method](nonparametric-method.md)

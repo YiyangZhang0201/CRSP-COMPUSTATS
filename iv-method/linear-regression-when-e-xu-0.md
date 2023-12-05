@@ -38,5 +38,5 @@ Now, we are going to talk about these scenarios in detail.
 
 
 
-## Instrumental Variables
+
 
