@@ -105,7 +105,75 @@ Note that:
 
 ## Gauss-Markov Theorem
 
+### Homoskedastic and Heteroskedastic
 
+Suppose $$E[U \mid X]=0$$ and that $$\operatorname{Var}[U \mid X]=\sigma^2$$.
+
+* When $$\operatorname{Var}[U \mid X]$$ is constant (and therefore does not depend on $$X$$ ) we say that $$U$$ is homoskedastic.&#x20;
+* Otherwise, we say that $$U$$ is heteroskedastic.
+
+And there are two ways to check the homoskedastic and heteroskedastic:
+
+1. We can do regression for $$\operatorname{Var}[U \mid X]$$ on $$X$$, if covariance for $$X$$ is significantly different with 0.
+2. We can also plot the value of $$\operatorname{Var}[U \mid X]$$, and check the plot to see if there is any trend in the plot.
+
+### Gauss-Markov Theorem
+
+**Gauss-Markov Theorem**: under these assumptions **the OLS estimator is "best" in the sense that it has the "smallest" value of** $$\operatorname{Var}\left[\mathbb{A}^{\prime} \mathbb{Y} \mid X_1, \ldots, X_n\right]$$ among all estimators of the form
+
+$$
+\mathbb{A}^{\prime} \mathbb{Y}
+$$
+
+for some matrix $$\mathbb{A}=\mathbb{A}\left(X_1, \ldots, X_n\right)$$ satisfying
+
+$$
+E\left[\mathbb{A}^{\prime} \mathbb{Y}\mid X_1, \ldots, X_n\right]=\beta
+$$
+
+Note that $$\mathbb{A}^{\prime} \mathbb{Y}$$ is linear in $$\mathbb{Y}$$, so we might be able to get better in variance using the WLS. Gauss-Markove Theorem is just for OLS case.
+
+Denote the variance matrix as $$B$$, we can have that the "smallest" is understood as the partial order obtained by $$B \geq \tilde{B}$$ if $$B-\tilde{B}$$ is positive semi-definite.
+
+Taking above matrix comparison skill in to our theorem, the "best" unbiased linear estimator is obtained by finding the matrix $$\mathbb{A}_0$$ satisfying $$\mathbb{A}_0^{\prime} \mathbb{X}=\mathbb{I}_{k}$$ such that $$\mathbb{A}_0^{\prime} \mathbb{A}_0$$ is minimized in the positive definite sense, which means that for any other matrix $$\mathbb{A}$$ satisfying $$\mathbb{A}^{\prime} \mathbb{X}=\mathbb{I}_k$$ then $$\mathbb{A}^{\prime} \mathbb{A}-\mathbb{A}_0^{\prime} \mathbb{A}_0$$ is positive semi-definite.
+
+This class of estimators includes the OLS estimator as a special case (by setting $$\mathbb{A}^{\prime}=\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} \mathbb{X}^{\prime}$$. The property is sometimes expressed as saying that **OLS estimator is the "best linear unbiased estimator (BLUE)"** **of** $$\beta$$ **under these assumptions.**
+
+The Gauss-Markov theorem provides a lower bound on the variance matrix of unbiased linear estimators under the assumption of homoskedasticity. It says that no unbiased linear estimator can have a variance matrix smaller (in the positive definite sense) than $$\sigma^2\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1}$$.
+
+Now we do the following proofs:
+
+* **The estimator is** $$\mathbb{A}^{\prime} Y$$ **for** $$\mathbb{A}=\mathbb{A}\left(X_1, \ldots, X_n\right)$$ **and satisfies** $$E\left[\mathbb{A}^{\prime} \mathbf{Y} \mid X_1, \ldots, X_n\right]=\beta$$**.**
+
+**Proof:**
+
+As we have $$Y=X \beta+U$$ $$\Rightarrow$$ $$\mathbb{A}^{\prime} Y=\mathbb{A}^{\prime}(X \beta+U)$$ $$\Rightarrow$$ $$\mathbb{A}^{\prime} Y=\mathbb{A}^{\prime} X \beta+\mathbb{A}^{\prime} U$$
+
+Now we can have that, $$E\left[\mathbb{A}^{\prime} Y \mid X_1, \ldots, X_n\right]=E\left[\mathbb{A}^{\prime} X \beta+\mathbb{A}^{\prime} U \mid X_1, \ldots, X_n\right]$$
+
+As $$\mathbb{A}=\mathbb{A}\left(X_1, \ldots, X_n\right)$$ depend on $$X_1, \ldots, X_n$$, and $$X \perp U$$, we can have that:
+
+$$E\left[\mathbb{A}^{\prime} X \beta\mid X_1, \ldots, X_n\right]=\mathbb{A}^{\prime} X \beta$$ & $$E\left[\mathbb{A}^{\prime} U \mid X_1, \ldots, X_n\right]=0$$
+
+So we got that $$E\left[\mathbb{A}^{\prime} Y \mid X_1, \ldots, X_n\right]=\mathbb{A}^{\prime} X \beta$$, combine this with $$\mathbb{A}^{\prime} \mathbb{X}=\mathbb{I}$$, we finished the proof that
+
+$$
+E\left[\mathbb{A}^{\prime} \mathbf{Y} \mid \boldsymbol{X}_1, \ldots, \boldsymbol{X}_n\right]=\beta
+$$
+
+* **Show** $$\mathbb{A}^{\prime} \mathbb{A}-\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1}$$ **is positive semi-definite for any** $$\mathbb{A}$$ **satisfying** $$\mathbb{A}^{\prime} \mathbb{X}=\mathbb{I}$$
+
+**Proof:**
+
+We need to show $$\mathbb{A}^{\prime} \mathbb{A}-\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} > 0$$.
+
+Set $$\boldsymbol{C}=\boldsymbol{A}-\boldsymbol{X}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1}$$. Note that $$\boldsymbol{X}^{\prime} \boldsymbol{C}=\mathbf{0}$$. We calculate that
+
+$$
+\begin{aligned} \boldsymbol{A}^{\prime} \boldsymbol{A}-\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} & =\left(\boldsymbol{C}+\boldsymbol{X}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1}\right)^{\prime}\left(\boldsymbol{C}+\boldsymbol{X}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1}\right)-\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \\ & =\boldsymbol{C}^{\prime} \boldsymbol{C}+\boldsymbol{C}^{\prime} \boldsymbol{X}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1}+\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\prime} \boldsymbol{C} \\ & +\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\prime} \boldsymbol{X}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1}-\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \\ & =\boldsymbol{C}^{\prime} \boldsymbol{C} \\ & >0 \end{aligned}
+$$
+
+The final inequality states that the matrix $$\boldsymbol{C}^{\prime} \boldsymbol{C}$$ is positive semi-definite which is a property of quadratic form.
 
 ## Consistency
 
