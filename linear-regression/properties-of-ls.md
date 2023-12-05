@@ -238,5 +238,7 @@ $$
 \hat{\beta}-\beta=\left(\frac{1}{n} \sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \frac{1}{n} \sum_{i=1}^n X_i U_i
 $$
 
-We have shown that
+We have shown that:
+
+
 
