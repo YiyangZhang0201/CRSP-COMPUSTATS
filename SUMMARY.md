@@ -9,7 +9,7 @@
   * [Measures of Fit](linear-regression/measures-of-fit.md)
   * [Inference on Linear Models](linear-regression/inference-on-linear-models.md)
 * [IV Method](iv-method/README.md)
-  * [Linear Regression When E\[XU\]!=0](iv-method/linear-regression-when-e-xu-0.md)
+  * [Endogeneity](iv-method/endogeneity.md)
   * [Instrumental Variables](iv-method/instrumental-variables.md)
   * [TSLS Estimator](iv-method/tsls-estimator.md)
 * [Differences in Differences](differences-in-differences.md)
