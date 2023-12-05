@@ -167,13 +167,13 @@ $$
 
 We need to show $$\mathbb{A}^{\prime} \mathbb{A}-\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} > 0$$.
 
-Set $$\boldsymbol{C}=\boldsymbol{A}-\boldsymbol{X}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1}$$. Note that $$\boldsymbol{X}^{\prime} \boldsymbol{C}=\mathbf{0}$$. We calculate that
+Set . Note that $$\boldsymbol{X}^{\prime} \boldsymbol{C}=\mathbf{0}$$. We calculate that
 
 $$
-\begin{aligned} \boldsymbol{A}^{\prime} \boldsymbol{A}-\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} & =\left(\boldsymbol{C}+\boldsymbol{X}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1}\right)^{\prime}\left(\boldsymbol{C}+\boldsymbol{X}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1}\right)-\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \\ & =\boldsymbol{C}^{\prime} \boldsymbol{C}+\boldsymbol{C}^{\prime} \boldsymbol{X}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1}+\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\prime} \boldsymbol{C} \\ & +\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\prime} \boldsymbol{X}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1}-\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \\ & =\boldsymbol{C}^{\prime} \boldsymbol{C} \\ & >0 \end{aligned}
+\begin{aligned} \mathbb{A}^{\prime} \mathbb{A}-\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} & =\left(\mathbb{C}+\mathbb{X}\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1}\right)^{\prime}\left(\mathbb{C}+\mathbb{X}\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1}\right)-\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} \\ & =\mathbb{C}^{\prime} \mathbb{C}+\mathbb{C}^{\prime} \mathbb{X}\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1}+\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} \mathbb{X}^{\prime} \mathbb{C} \\ & +\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} \mathbb{X}^{\prime} \mathbb{X}\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1}-\left(\mathbb{X}^{\prime} \mathbb{X}\right)^{-1} \\ & =\mathbb{C}^{\prime} \mathbb{C} \\ & >0 \end{aligned}
 $$
 
-The final inequality states that the matrix $$\boldsymbol{C}^{\prime} \boldsymbol{C}$$ is positive semi-definite which is a property of quadratic form.
+The final inequality states that the matrix $$\mathbb{C}^{\prime} \mathbb{C}$$ is positive semi-definite which is a property of quadratic form.
 
 ## Consistency
 
@@ -209,4 +209,34 @@ $$
 Now we finished our proof for consistency.
 
 ## Asymptotic Normality
+
+We already assume that our model satisfies the three assumptions in the previous analysis:
+
+1. $$E[X U]=0$$
+2. $$E\left[X X^{\prime}\right]<\infty$$
+3. There is no perfect collinearity in $$X$$
+
+Now, we add a forth assumption, which is:
+
+4. $$\operatorname{Var}[X U]=E\left[X X^{\prime} U^2\right]<\infty$$
+
+Then, as $$n \rightarrow \infty$$, we have
+
+$$
+\sqrt{n}(\hat{\beta}-\beta) \stackrel{d}{\rightarrow} N(0, \mathbb{V}) \text { where } \mathbb{V}=\left(E\left[X X^{\prime}\right]\right)^{-1} E\left[X X^{\prime} U^2\right]\left(E\left[X X^{\prime}\right]\right)^{-1}
+$$
+
+As we have calculated before,&#x20;
+
+$$
+\begin{aligned} \hat{\beta} & =\left(\frac{1}{n} \sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \frac{1}{n} \sum_{i=1}^n X_i Y_i \\ & =\left(\frac{1}{n} \sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \frac{1}{n} \sum_{i=1}^n X_i\left(X_i \beta+U_i\right) \\ & =\beta+\left(\frac{1}{n} \sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \frac{1}{n} \sum_{i=1}^n X_i U_i \end{aligned}
+$$
+
+Therefore, we have
+
+$$
+\hat{\beta}-\beta=\left(\frac{1}{n} \sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \frac{1}{n} \sum_{i=1}^n X_i U_i
+$$
+
+We have shown that
 
