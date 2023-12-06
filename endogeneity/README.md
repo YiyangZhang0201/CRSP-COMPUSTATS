@@ -54,4 +54,4 @@ $$
 \begin{aligned} \hat{\beta} & =\left(\sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \sum_{i=1}^n X_i Y_i \\ & =\left(\frac{1}{n} \sum_{i=1}^n X_i X_i^{\prime}\right)^{-1} \frac{1}{n} \sum_{i=1}^n X_i Y_i \\ & \stackrel{P}{\longrightarrow}\left(\mathbb{E}\left[X_i X_i^{\prime}\right]\right)^{-1} \mathbb{E}\left[X_i Y_i^{\prime}\right] \\ & =\left(\mathbb{E}\left[X_i X_i^{\prime}\right]\right)^{-1} \mathbb{E}\left[X_i\left(X_i^{\prime} \beta+u_i\right)\right] \\ & =\beta+\left(\mathbb{E}\left[X_i X_i^{\prime}\right]\right)^{-1} \mathbb{E}\left[X_i u_i\right] \\ & \neq \beta \quad \text { if } \mathbb{E}\left[X_i u_i\right] \neq 0 . \end{aligned}
 $$
 
-Therefore, $$p \lim _{n \rightarrow \infty} \hat{\beta} \neq \beta$$, the OLS estimator is inconsistent.
+Therefore, $$p \lim _{n \rightarrow \infty} \hat{\beta} \neq \beta$$, the OLS estimator is inconsistent and biased.
