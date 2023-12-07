@@ -146,11 +146,43 @@ $$
 
 **This means that, under measurement error, the OLS is going to underestimate the coefficient. This bias is called Attenuation Bias. The OLS estimator under measurement error is both inconsistent and biased.**
 
-Note that the part
+Note that the part $$\frac{\operatorname{Var}\left(V\right)}{\operatorname{Var}\left(\hat{X}_1\right)}$$is called the noise-to-signal ratio. The estimated $$\hat{\beta_1}^*$$is close to 0 if the measurement error $$V$$'s variance is too big.
 
 ## Simultaneity
 
+Simultaneity in the context of econometrics and statistical modeling refers to a situation where a cause-and-effect relationship between two variables is bidirectional, meaning each variable simultaneously affects and is affected by the other. This will lead to endogeneity.
 
+Classical example: supply and demand. Let $$Q^s$$ be quantity supplied and $$Q^d$$ be quantity demanded. As a function of (non-market clearing) price $$\tilde{P}$$, assume
 
+$$
+\begin{aligned} & Q^d=\beta_0^d+\beta_1^d \tilde{P}+U^d \\ & Q^s=\beta_0^s+\beta_1^s \tilde{P}+U^s \end{aligned}
+$$
 
+* **Price Affects Quantity**: In both equations, price ($$P$$) is an explanatory variable affecting $$Q^d$$ and $$Q^s$$.
+* **Quantity Affects Price**: At the same time, in a market, the equilibrium price is determined by the interaction of $$Q^d$$ and $$Q^s$$. This creates a simultaneity problem since the price is both influencing and being influenced by the quantities.
 
+Note that, $$U^d$$ and $$U^s$$ denotes for the other factors that affect demand and supply sides. The other relationship between the price and quantity may be included in them. This will lead to the endogeneity of the equilibrium price $$\tilde{P}$$.
+
+Also we assume where $$E\left[U^s\right]=E\left[U^d\right]=E\left[U^s U^d\right]=0$$. We observe $$(Q, P)$$, where $$Q$$ and $$P$$ are such that the market clears, i.e., $$Q^s=Q^d$$. This implies the equilibrium price $$\tilde{P}$$ is:
+
+$$
+\beta_0^d+\beta_1^d \tilde{P}+U^d=\beta_0^s+\beta_1^s \tilde{P}+U^s
+$$
+
+$$
+\tilde{P}=\frac{\beta_0^d+U^d-\left(\beta_0^s+U^s\right)}{\beta_1^s-\beta_1^d}
+$$
+
+Here we can get that,&#x20;
+
+$$
+\operatorname{Cov}\left(\tilde{P}, U^d\right)=\operatorname{Cov}\left(\frac{U^d}{\beta_1^s-\beta_1^d}, U^d\right)=\frac{\operatorname{Var}\left(U^d\right)}{\beta_1^s -\beta_1^d} \neq 0
+$$
+
+and similarly,&#x20;
+
+$$
+\operatorname{Cov}\left(\tilde{P}, U^s\right)=\operatorname{Cov}\left(-\frac{U^s}{\beta_1^s-\beta_1^d}, U^s\right)=-\frac{\operatorname{Var}\left(U^s\right)}{\beta_1^s -\beta_1^d} \neq 0
+$$
+
+These lead to the endogeneity of equilibrium price $$\tilde{P}$$.
