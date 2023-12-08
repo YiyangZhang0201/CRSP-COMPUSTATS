@@ -18,15 +18,6 @@ In summary, we assume:
 
     A necessary condition for 5 to be true is $$l \geq k$$. This is referred to as the **Order Condition**.
 
-Note that the IV can also be the variable itself, in following regression:
-
-$$
-Y=\beta_0+\beta_1 X_1+\beta_2 X_2+U
-$$
-
-* If $$E\left[X_1 U\right] \neq 0$$: we can choose to find an IV $$Z$$ for $$X_1$$, such that $$E[Z U]=0$$
-* If $$E\left[X_2 U\right]=0$$: $$X_2$$ itself can be view as an IV for $$X_2$$
-
 To further understand the IV estimator, we need to know the following:
 
 For regression&#x20;
@@ -74,6 +65,27 @@ Suppose there is no perfect collinearity in $$Z$$ and let $$\Pi$$ be such that $
 
 Note that if some $$X_j$$ are exogenous, then we do not need IVs for them.
 
+### Solve for Beta
+
+
+
+
+
+
+
+###
+
+
+
+
+
+
+
+
+
+
+
+### Interpreting The Rank Condition
 
 
 
@@ -86,5 +98,58 @@ Note that if some $$X_j$$ are exogenous, then we do not need IVs for them.
 
 
 
-## Interpreting The Rank Condition
+
+
+
+
+
+### Partition of Beta: Endogenous Components
+
+Note that the IV can also be the variable itself, in following regression:
+
+$$
+Y=X_1^{\prime} \beta_1+X_2^{\prime} \beta_2+U
+$$
+
+* If $$E\left[X_1 U\right] \neq 0$$: we can choose to find an IV $$Z_1$$ for $$X_1$$, such that $$E[Z_1 U]=0$$
+* If $$E\left[X_2 U\right]=0$$: $$X_2$$ itself can be view as an IV for $$X_2$$, such as $$Z_2 = X_2$$
+
+Here, we partition $$X$$ into $$X_1$$ and $$X_2$$, where $$X_2$$ is exogenous. Partition $$Z$$ into $$Z_1$$ and $$Z_2$$ and $$\beta$$ into $$\beta_1$$ and $$\beta_2$$ analogously.
+
+We have that, in this model:
+
+* $$Z_2=X_2$$ are **included instruments**&#x20;
+* $$Z_1$$ are **excluded instruments**&#x20;
+
+We can conveniently re-write this by projecting $$(B L P)$$ on $$Z_2=X_2$$. Consider the case $$k=l$$
+
+$$
+B L P\left(Y \mid Z_2\right)=B L P\left(X_1 \mid Z_2\right)^{\prime} \beta_1+X_2^{\prime} \beta_2 .
+$$
+
+Define $$Y^*=Y-B L P\left(Y \mid Z_2\right)$$ and $$X_1^*=X_1-B L P\left(X_1 \mid Z_2\right)$$ so that
+
+$$
+E\left[Z_1 Y^*\right]=E\left[Z_1 X_1^{* \prime}\right] \beta_1+E\left[Z_1 U\right]
+$$
+
+It follows that
+
+$$
+\beta_1=\left(E\left[Z_1 X_1^{* \prime}\right]\right)^{-1} E\left[Z_1 Y^*\right]
+$$
+
+
+
+
+
+
+
+
+
+## IV Estimator
+
+
+
+
 
