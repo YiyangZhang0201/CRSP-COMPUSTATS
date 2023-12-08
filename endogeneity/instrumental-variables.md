@@ -93,7 +93,7 @@ $$
 
 
 
-### Interpreting The Rank Condition
+### Interpreting The Rank Condition (**Instrument Relevance)**
 
 
 
