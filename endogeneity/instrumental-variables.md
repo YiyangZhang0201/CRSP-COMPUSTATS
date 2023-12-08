@@ -50,17 +50,29 @@ Therefore, the draft lottery return status can serve as a good IV.
 
 ## Solving For Beta
 
+Using that $$U=Y-X^{\prime} \beta$$ and $$E[Z U]=0$$, we see that $$\beta$$ solves the system of equations
 
+$$
+E[Z Y]=E\left[Z X^{\prime}\right] \beta
+$$
 
+**Proof**:
 
+$$E[Z Y]=E\left[Z(U+X^{\prime}\beta)\right] = 0 + E\left[Z X^{\prime}\right] \beta = E\left[Z X^{\prime}\right] \beta$$
 
+Note that the invertible of $$E\left[Z X^{\prime}\right]$$ is not guaranteed. This is because since $$l+1 \geq k+1$$, this may be an over-determined system of equations. There is more information than we need. Which can be shown in the following:
 
+$$
+Z=\left(\begin{array}{c} 1 \\ Z_1 \\ \vdots \\ Z_l \end{array}\right)_{(l+1) \times 1} \quad X=\left(\begin{array}{c} 1 \\ X_1 \\ \vdots \\ X_k \end{array}\right)_{(k + 1) \times 1} \quad \beta=\left(\begin{array}{c} 1\\ \beta_1 \\ \vdots \\ \beta_k \end{array}\right)_{(k+1) \times 1}
+$$
 
+Therefore, in order to solve for $$\beta$$, we introduce the following lemma:
 
+### Lemma:
 
+Suppose there is no perfect collinearity in $$Z$$ and let $$\Pi$$ be such that $$B L P(X \mid Z)=\Pi^{\prime} Z . E\left[Z X^{\prime}\right]$$ has rank $$k+1$$ if and only if $$\Pi$$ has rank $$k+1$$. Moreover, the matrix $$\Pi^{\prime} E\left[Z X^{\prime}\right]$$ is invertible.
 
-
-
+Note that if some $$X_j$$ are exogenous, then we do not need IVs for them.
 
 
 
