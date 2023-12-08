@@ -67,7 +67,15 @@ Note that if some $$X_j$$ are exogenous, then we do not need IVs for them.
 
 ### Solve for Beta
 
+As $$\beta \text { solves: } E[Z Y]=E\left[Z X^{\prime}\right] \beta \text { or } \Pi^{\prime} E[Z Y]=\Pi^{\prime} E\left[Z X^{\prime}\right]\beta$$, then we can have that using the previous lemma and $$\Pi=E\left[Z Z^{\prime}\right]^{-1} E\left[Z X^{\prime}\right]$$, we can derive three formulae for $$\beta$$
 
+Since we have $$X=\left(\begin{array}{c}1 \\ X_1 \\ \vdots \\ X_k\end{array}\right) \quad Z=\left(\begin{array}{c}1 \\ Z \\ \vdots \\ Z_l\end{array}\right)$$, and the&#x20;
+
+First regression $$X$$ on instrument variable $$Z$$:
+
+$$
+\begin{aligned} X_0&=Z^{\prime} \Pi_0+U_0=1 \\ X_1&=Z^{\prime} \Pi_1+U_1 \\ X_2&=Z^{\prime} \Pi_2+U_2 \\ \vdots \\ X_k&=Z^{\prime} \Pi_k+U_k \end{aligned}
+$$
 
 
 

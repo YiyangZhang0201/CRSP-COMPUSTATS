@@ -12,6 +12,7 @@
   * [Endogeneity](endogeneity/endogeneity.md)
   * [Instrumental Variables](endogeneity/instrumental-variables.md)
   * [TSLS Estimator](endogeneity/tsls-estimator.md)
+  * [Interpretation  Under  Heterogeneity](endogeneity/interpretation-under-heterogeneity.md)
 * [Differences in Differences](differences-in-differences.md)
 * [Synthetic Control](synthetic-control.md)
 * [Nonparametric Method](nonparametric-method.md)
