@@ -1,7 +1,8 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Mathematical Review](mathematical-review.md)
+* [Mathematical Review](mathematical-review/README.md)
+  * [Matrix Calculation](mathematical-review/matrix-calculation.md)
 * [Linear Regression](linear-regression/README.md)
   * [Interpretations of Linear Regression](linear-regression/interpretations-of-linear-regression.md)
   * [Linear Regression When E\[XU\]=0](linear-regression/linear-regression-when-e-xu-0.md)
