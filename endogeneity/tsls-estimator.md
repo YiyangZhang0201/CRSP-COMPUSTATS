@@ -79,11 +79,99 @@ $$
 
 ## Properties of Two-Stage Least Squares
 
+Let $$(Y, X, U)$$ be a random vector where $$Y$$ and $$U$$ take values in $$\mathbf{R}$$ and $$X$$ takes values in $$\mathbf{R}^{k+1}$$. Assume further that the first component of $$X$$ is constant and equal to one, i.e., $$X=\left(X_0, X_1, \ldots, X_k\right)^{\prime}$$ with $$X_0=1$$. Let $$\beta=\left(\beta_0, \beta_1, \ldots, \beta_k\right)^{\prime} \in \mathbf{R}^{k+1}$$ be such that
+
+$$
+Y=X^{\prime} \beta+U
+$$
+
+Estimation in OLS is inconsistent and biased if $$E[XU]\neq0$$
+
+We assume:
+
+1. &#x20;$$E[Z U]=0$$: Exclusion Condition: variable need to be valid IV
+2. $$E\left[Z X^{\prime}\right]<\infty$$: Regularity condition
+3. $$E\left[Z Z^{\prime}\right]<\infty$$: Regularity condition
+4. There is no perfect collinearity in $$Z$$
+5. The rank of $$E\left[Z X^{\prime}\right]$$ is $$k+1$$: Relevance Condition
+
+Let $$\left(Y_1, X_1, Z_1\right), \ldots,\left(Y_n, X_n, Z_n\right)$$ be an i.i.d. sequence of random variables with distribution $$P$$.
+
+Under these assumptions the TSLS estimator is consistent for $$\beta$$, and under the additional requirement that $$\operatorname{Var}[Z U]<\infty$$, it is asymptotically normal with limiting variance
+
+$$
+\mathbb{V}=\left[E\left(\Pi^{\prime} Z Z^{\prime} \Pi\right)\right]^{-1} \Pi^{\prime} \operatorname{Var}[Z U] \Pi\left[E\left(\Pi^{\prime} Z Z^{\prime} \Pi\right)\right]^{-1}
+$$
+
 ### Consistency of TSLS
 
+The nature estimator of $$\beta$$ under TSLS $$\hat{\beta}$$ satisfies&#x20;
 
+$$
+\hat{\beta}=\left[\hat{\Pi}_n^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i X_i^{\prime}\right)\right]^{-1} \hat{\Pi}_n^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i Y_i\right) \stackrel{P}{\rightarrow} \beta \text { as } n \rightarrow \infty .
+$$
+
+**Proof:**
+
+As $$\hat{\Pi}=\left(\frac{1}{n} \sum_i Z_i Z_i^{\prime}\right)^{-1}\left(\frac{1}{n} \sum_i Z_i X_i^{\prime}\right)$$ $$\stackrel{P}{\longrightarrow}$$ $$\Pi=E\left[Z Z^{\prime}\right]^{-1} E\left[Z X^{\prime}\right]$$, and $$\frac{1}{n} \sum_{1 \leqslant i \leqslant n} Z_i X_i^{\prime} \stackrel{P}{\longrightarrow} \mathbb{E}\left[Z_i X_i^{\prime}\right]$$, then by Slutsky Theorem and Continuous Mapping Theorem (CMP) (for function $$f(X)=X^{-1}$$), we can have that, for the left part:
+
+$$
+\left(\hat{\Pi}_n^{\prime}\left(\frac{1}{n} \sum Z_i X_i^{\prime}\right)\right)^{-1} \stackrel{P}{\longrightarrow}\left(\Pi^{\prime} \mathbb{E}\left[Z_i X_i^{\prime}\right]\right)^{-1}
+$$
+
+For the right part, similarly, we can get that:
+
+$$
+\begin{aligned} & \frac{1}{n} \sum_{1 \leqslant i \leqslant n} Z_i Y_i=\frac{1}{n} \sum_{1 \leqslant i \leqslant n} Z_i\left(X_i^{\prime} \beta+U\right) \\ & =\frac{1}{n} \sum_{1 \leqslant i \leqslant n} Z_i X_{i}^{\prime} \beta+\frac{1}{n} \sum_{1 \leqslant i \leqslant n} Z_i U_i \\ & \stackrel{P}{\longrightarrow}\mathbb{E}\left[Z_i X_{i}^{\prime}\right] \beta+\mathbb{E}[Z_i U_i] \\ & =\mathbb{E}\left[Z_i X_{i}^{\prime}\right] \beta+0=\mathbb{E}\left[Z_i X_{i}^{\prime}\right] \beta \\ \end{aligned}
+$$
+
+Therefore,&#x20;
+
+$$
+\hat{\Pi}_n^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i Y_i\right) \stackrel{P}{\rightarrow}\Pi^{\prime} \mathbb{E}\left[Z_i X_i^{\prime}\right]\beta
+$$
+
+Therefore, we can have finished the proof that $$\hat{\beta}=\left[\hat{\Pi}n^{\prime}\left(\frac{1}{n} \sum{1 \leq i \leq n} Z_i X_i^{\prime}\right)\right]^{-1} \hat{\Pi}n^{\prime}\left(\frac{1}{n} \sum{1 \leq i \leq n} Z_i Y_i\right) \stackrel{P}{\rightarrow} \beta \text { as } n \rightarrow \infty .$$
 
 ### Asymptotic Normality of TSLS
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Estimation of V:
+
+A natural estimator of $$\mathbb{V}$$ is given by
+
+$$
+\hat{\mathbb{V}}_n= {\left[\hat{\Pi}^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i Z_i^{\prime}\right) \hat{\Pi}\right]^{-1} \hat{\Pi}^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i Z_i^{\prime} \hat{U}_i^2\right) \hat{\Pi} } {\left[\hat{\Pi}^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i Z_i^{\prime}\right) \hat{\Pi}\right]^{-1} }
+$$
+
+where $$\hat{U}_i=Y_i-X_i^{\prime} \hat{\beta}$$.
+
+The primary difficulty in establishing the consistency of this estimator lies in showing that
+
+$$
+\frac{1}{n} \sum_{1 \leq i \leq n} Z_i Z_i^{\prime} \hat{U}_i^2 \stackrel{P}{\rightarrow} \operatorname{Var}[Z U]
+$$
+
+as $$n \rightarrow \infty$$. The complication lies in the fact that we do not observe $$U_i$$ and therefore have to use $$\hat{U}_i$$.
+
+However, please note that $$\hat{U}_i=Y_i-X_i^{\prime} \hat{\beta} \neq Y_i-\hat{X}_i^{\prime} \hat{\beta}$$, so the standard errors from two repeated applications of OLS will be incorrect. **And Stata is using** $$\hat{X_i}^{\prime}$$ **as default. So, to do the Two-Step Regression correctly, you need to use command `ivregress`.**
 

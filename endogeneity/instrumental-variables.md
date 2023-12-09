@@ -28,7 +28,7 @@ $$
 
 * $$X$$: dimension is $$(k+1) \times 1$$
 * $$Z$$: dimension is $$(\ell+1) \times 1$$, and $$l \geqslant k$$
-* $$Z$$ only influence $$Y$$through $$X$$, this means that $$Z$$ only correlated with $$X$$ but not correlated with $$U$$.&#x20;
+* $$Z$$ **only influence** $$Y$$**through** $$X$$**, not through** $$U$$. **this means that** $$Z$$ **only correlated with** $$X$$ **but not correlated with** $$U$$**.**&#x20;
 
 **Here is an example of using IV in real-world empirical analysis:**
 
