@@ -113,39 +113,69 @@ $$
 X=\left(\begin{array}{c} 1\\ X_1 \\ \vdots \\ X_k \end{array}\right)=\left(\begin{array}{c} Z^{\prime} \Pi_0 \\ Z^{\prime} \Pi_1 \\ \vdots \\ Z^{\prime} \Pi_k \end{array}\right)+\left(\begin{array}{c} U_0 \\ U_1 \\ \vdots \\ U_k \end{array}\right)=\Pi^{\prime} Z+U .
 $$
 
-As $$\Pi^{\prime}Z$$ is the BLP of $$X$$, we can have that $$E[U]=0 \text{ and } E[ZU]=0$$.
+As $$\Pi^{\prime}Z$$ is the BLP of $$X$$, we can have that $$E[U]=0 \text{ and } E[ZU]=0$$. Take this into the formula $$\beta=\left[\Pi^{\prime} E\left(Z X^{\prime}\right)\right]^{-1} \Pi^{\prime} E[Z Y]$$, we can have that.
 
-
-
-
+$$
+\begin{aligned} \beta & =\left[\Pi^{\prime} E\left[Z\left(\Pi^{\prime} Z+U\right)^{\prime}\right]\right]^{-1} \Pi^{\prime} E[Z Y] \\ & =\left[\Pi^{\prime} E\left[Z Z^{\prime}\right] \Pi+\Pi^{\prime}E[ZU]\right]^{-1} \Pi^{\prime} E[Z Y] \\ & =\left[\Pi^{\prime} E\left[Z Z^{\prime}\right] \Pi\right]^{-1} \Pi^{\prime} E[Z Y] \end{aligned}
+$$
 
 #### Equation 3: TSLS Version 2
 
+As $$\Pi^{\prime}$$ is a matrix of real numbers, we can put it in the expectation. So $$\beta$$ can be rewritten as&#x20;
 
+$$
+\beta=\left[\mathbb{E}\left[\left(\Pi^{\prime} Z\right)\left(\Pi^{\prime} Z\right)^{\prime}\right]\right]^{-1} \mathbb{E}\left[\left(\Pi^{\prime} Z\right) Y\right]
+$$
 
+We can denote that $$W = \Pi^{\prime}Z$$, which stands for the linear combination of instruments. Take this into the formula of $$\beta$$, we have
 
-
-
-
-
+$$
+\beta=\left(E\left[W W^{\prime}\right]\right)^{-1} E[W Y]
+$$
 
 ### Interpreting The Rank Condition (**Instrument Relevance)**
 
+* The rank condition for IV estimation is a technical requirement that ensures the IV or set of IVs provides enough information to identify the model.
+* Essentially, it requires that the matrix of instruments $$Z$$ should have sufficient rank so that the projection matrix $$Π$$ adequately captures the relevant information in the endogenous variables.
 
+Interpretation: Consider the case where $$k=l$$ and only $$X_k$$ is endogenous. Let $$Z_j=X_j$$ for all $$0 \leq j \leq k-1$$. In this case,
 
+$$
+\Pi^{\prime}=\left(\begin{array}{ccccc} 1 & 0 & \ldots & 0 & 0 \\ 0 & 1 & \ldots & 0 & 0 \\ \vdots & \vdots & & \vdots & \vdots \\ 0 & 0 & \ldots & 1 & 0 \\ \pi_0 & \pi_1 & \ldots & \pi_{l-1} & \pi_l \end{array}\right)
+$$
 
+The rank condition therefore requires $$\pi_l \neq 0$$ : the instrument $$Z_l$$ must be "correlated with $$X_k$$ after controlling for $$X_0, X_1, \ldots, X_{k-1}$$."
 
+1. **Strong IV**:
+   * A strong IV is highly correlated with the endogenous explanatory variable.
+   * This strong correlation ensures that the IV effectively captures the variation in the endogenous variable that is not related to the error term in the regression model.
+   * Strong IVs lead to more reliable and precise estimates in IV regression.
+2. **Weak IV**:
+   * A weak IV has a weak correlation with the endogenous explanatory variable.
+   * This weak correlation means that the IV does not effectively capture the variation in the endogenous variable, making it less effective in dealing with endogeneity.
+   * Weak IVs can lead to biased estimates and poor inference because they do not provide a good substitute for the endogenous variable.
 
+In our scenario,&#x20;
 
+* If $$π_l​$$ is close to zero, $$Z_l​$$ is a weak IV because it does not add much explanatory power beyond what is already captured by $$X_0,X_1,…,X_{k−1}$$.
+* If $$π_l​$$ is significantly different from zero, $$Z_l​$$ is considered a strong IV, as it is meaningfully correlated with the endogenous variable $$X_k​$$, independent of the other explanatory variables.
+* If $$Π$$ is Near-Singularity, we can have that this is a weak IV estimator that doesn't explain $$X$$ well. This weak IV estimator problem will lead to:
+  * **Large Variance**: When the instrument is weak, the variance of the IV estimator becomes very large. This leads to wide confidence intervals, making it difficult to draw precise inferences about the parameters.
+  * **Biased Estimation**: In small samples, a weak instrument can lead to biased estimates, and these biases can be as bad or even worse than the OLS estimates that suffer from endogeneity.
+  * **Inconsistent Estimation**: In theory, the IV estimator is consistent as the sample size approaches infinity. However, with a weak instrument, the convergence to the true parameter value can be very slow, leading to practical issues in estimation, even with large samples.
 
+In summary, if the $$Z$$ doesn't satisfy the rank condition (relevance condition), here are the consequences:
 
+* **Weak Instrument Problem**: If the IV is weakly correlated (or not correlated) with the endogenous variable, it results in a weak instrument problem. This can lead to biased and inconsistent estimates, similar to or even worse than the original OLS estimates that were affected by endogeneity.
+* **Inefficiency**: The estimates may also have large standard errors, leading to inefficiency and making it difficult to draw reliable inferences.
+* **Identification Issue**: In the extreme case where there is no correlation at all, the model becomes unidentified, meaning that you cannot reliably estimate the coefficients of the endogenous variables.
 
+### Interpreting The Exogeneity Condition
 
+**Consequence of Violation**:
 
-
-
-
-
+* **Biased and Inconsistent Estimates**: If the IV is correlated with the error term, the estimates will be biased and inconsistent. This is because the instrument is not isolating only the exogenous variation in the endogenous explanatory variable—it's also capturing some of the effects that should be in the error term.
+* **Invalid Inferences**: Any inferences made about the effect of the endogenous explanatory variable on the dependent variable would be invalid because they are contaminated by the correlation with the error term.
 
 ### Partition of Beta: Endogenous Components
 
@@ -182,14 +212,6 @@ It follows that
 $$
 \beta_1=\left(E\left[Z_1 X_1^{* \prime}\right]\right)^{-1} E\left[Z_1 Y^*\right]
 $$
-
-
-
-
-
-
-
-
 
 ## IV Estimator
 
