@@ -131,29 +131,63 @@ $$
 \hat{\Pi}_n^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i Y_i\right) \stackrel{P}{\rightarrow}\Pi^{\prime} \mathbb{E}\left[Z_i X_i^{\prime}\right]\beta
 $$
 
-Therefore, we can have finished the proof that $$\hat{\beta}=\left[\hat{\Pi}n^{\prime}\left(\frac{1}{n} \sum{1 \leq i \leq n} Z_i X_i^{\prime}\right)\right]^{-1} \hat{\Pi}n^{\prime}\left(\frac{1}{n} \sum{1 \leq i \leq n} Z_i Y_i\right) \stackrel{P}{\rightarrow} \beta \text { as } n \rightarrow \infty .$$
+Therefore, we can have finished the proof that&#x20;
+
+$$
+\hat{\beta}=\left[\hat{\Pi}_n^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i X_i^{\prime}\right)\right]^{-1} \hat{\Pi}_n^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i Y_i\right) \stackrel{P}{\rightarrow} \beta \text { as } n \rightarrow \infty .
+$$
 
 ### Asymptotic Normality of TSLS
 
+Assume that $$\operatorname{Var}[Z U]=E\left[Z Z^{\prime} U^2\right]<\infty$$. Then, as $$n \rightarrow \infty$$,
 
+$$
+\sqrt{n}(\hat{\beta}-\beta) \stackrel{d}{\rightarrow} N(0, \mathbb{V})
+$$
 
+Based on the estimator of $$\hat{\beta}$$, we can have that:
 
+$$
+\hat{\beta}-\beta=\left[\hat{\Pi}_n^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i X_i^{\prime}\right)\right]^{-1} \hat{\Pi}_n^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i U_i\right)
+$$
 
+By CLT:&#x20;
 
+$$
+\sqrt{n} \frac{1}{n} \sum_{i=1}^n Z_i U_i \stackrel{d}{\longrightarrow} N\left(0, \operatorname{Var}\left(Z_i U_i\right)\right) .
+$$
 
+Then, take this inside, we can have that, based on the Slustky Theorem:
 
+$$
+\begin{aligned} \sqrt{n}\left(\hat{\beta}-\beta\right)&=\left[\hat{\Pi}^{\prime} \frac{1}{n} \sum_{i=1}^n Z_i X_i^{\prime}\right]^{-1} \hat{\Pi}^{\prime}\left(\sqrt{n} \frac{1}{n} \sum_{i=1}^n Z_i U_i\right)\\ &\stackrel{d}{\rightarrow}\underbrace{\left(\left[\hat{\Pi}^{\prime} \frac{1}{n} \sum_{i=1}^n Z_i X_i^{\prime}\right]^{-1} \hat{\Pi}^{\prime}\right)}_A \underbrace{N\left(0, \operatorname{Var}\left(Z_i U_i\right)\right)}_W \end{aligned}
+$$
 
+Since $$A$$ is scaler, we can have that:
 
+$$
+\begin{aligned} \operatorname{Var}(A \cdot W) & =\mathbb{E}\left[(A W-\mathbb{E}[A W])(A W-\mathbb{E}[A W])^{\prime}\right] \\ & =\mathbb{E}[A(W-\mathbb{E}[W])(W-\mathbb{E}[W])^{\prime} A^{\prime}] \\ & =A \mathbb{E}[(W-\mathbb{E}[W])(W-\mathbb{E}[W])^{\prime}] A^{\prime} \\ & =A \operatorname{Var}(W) A^{\prime} \end{aligned}
+$$
 
+Now we can have that $$\mathbb{V}$$ is
 
+$$
+\mathbb{V}= {\left[\hat{\Pi}^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i X_i^{\prime}\right) \right]^{-1} \hat{\Pi}^{\prime}Var\left(W\right)\hat{\Pi} \left[\hat{\Pi}^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i X_i^{\prime}\right) \right]^{-1} }
+$$
 
+As we have $$X=\Pi^{\prime} Z+e$$ $$\Rightarrow$$ $$X^{\prime}=Z^{\prime} \Pi+e$$
 
+Therefore, we can have that,&#x20;
 
+$$
+E\left[Z_i X_i\right] =E\left[Z_i Z_i^{\prime}\right] \Pi +\mathbb{E}\left[Z_i E_i\right] =E\left[Z_i Z_i^{\prime}\right] \Pi
+$$
 
+Now, we can get that:
 
-
-
-
+$$
+\mathbb{V}= {\left[\hat{\Pi}^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i Z_i^{\prime}\right) \hat{\Pi}\right]^{-1} \hat{\Pi}^{\prime}Var\left(W\right)\hat{\Pi} \left[\hat{\Pi}^{\prime}\left(\frac{1}{n} \sum_{1 \leq i \leq n} Z_i Z_i^{\prime}\right) \hat{\Pi}\right]^{-1} }
+$$
 
 #### Estimation of V:
 
@@ -173,5 +207,11 @@ $$
 
 as $$n \rightarrow \infty$$. The complication lies in the fact that we do not observe $$U_i$$ and therefore have to use $$\hat{U}_i$$.
 
-However, please note that $$\hat{U}_i=Y_i-X_i^{\prime} \hat{\beta} \neq Y_i-\hat{X}_i^{\prime} \hat{\beta}$$, so the standard errors from two repeated applications of OLS will be incorrect. **And Stata is using** $$\hat{X_i}^{\prime}$$ **as default. So, to do the Two-Step Regression correctly, you need to use command `ivregress`.**
+$$
+\operatorname{Var}(Z U)=E\left[Z U \cdot U Z^{\prime}\right] \text { since } E[Z U]=0
+$$
+
+
+
+However, please note that $$\hat{U}_i=Y_i-X_i^{\prime} \hat{\beta} \neq Y_i-\hat{X}_i^{\prime} \hat{\beta}$$, where $$\hat{X_i}$$  **is the regressor in the second stage of regression.** So the standard errors from two repeated applications of OLS will be incorrect. **And Stata is using** $$\hat{X_i}^{\prime}$$ **as default. So, to do the Two-Step Regression correctly, you need to use command `ivregress`.**
 
