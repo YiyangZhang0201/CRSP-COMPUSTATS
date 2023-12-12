@@ -1,2 +1,0 @@
-# Differences in Differences
-
