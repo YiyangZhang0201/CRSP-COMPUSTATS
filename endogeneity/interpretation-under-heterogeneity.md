@@ -48,5 +48,9 @@ $$
 
 In this case, under mild assumptions, the slope coefficient from OLS regression of $$Y$$ on a constant and $$D$$ yields a consistent estimate of the average treatment effect.
 
+Note that if $$D$$ is randomly assigned or the treated group is randomly drawn from sample (Treated group represents for whole population). Then ATE = ATET.
 
+### Selction
+
+In general, we expect $$D$$ to depend on $$(Y(1), Y(0))$$. Under this condition, OLS does not yield a consistent estimate of the average treatment effect.
 
