@@ -225,15 +225,76 @@ This monotonicity condition eliminates the defiers. If the monotonicity does not
 
 ### TSLS Estimator to Form Y(1) - Y(0)
 
+Since the potential outcome is $$E[Y \mid Z=1]-E[Y \mid Z=0]$$&#x20;
 
+as we have&#x20;
 
+$$
+\left\{\begin{array}{l} Y=D Y(1)+(1-D) Y(0) \\ D=Z D(1)+(1-Z) D(0) \end{array}\right.
+$$
 
+We got&#x20;
+
+$$
+\begin{aligned} &E[Y \mid Z=1]-E[Y \mid Z=0]\\ & =\mathbb{E}[D Y(1)+(1-D) Y(0) \mid Z=1]-\mathbb{E}[D Y(1)-(1-D) Y(0) \mid Z=0] . \\ & =\mathbb{E}[D(1) Y(1)+(1-D(1)) Y(0) \mid Z=1]-\mathbb{E}[D( 0) Y(1)-(1-D(0)) Y(0) \mid Z=0] \end{aligned}
+$$
+
+since the instrument $$Z$$ here is exogenous
+
+$$
+\begin{gathered} =\mathbb{E}\left[D(1) Y(1)+(1-D(1)) Y_0\right]-\mathbb{E}[D(0) Y(1)-(1-D(0)) Y(0)] \\ =\mathbb{E}\{[D(1)-D(0)] Y(1)-[D(1)-D(0)] Y(0)\} \\ =\mathbb{E}\{(D(1)-D(0))(Y(1)-Y(0))\} \end{gathered}
+$$
+
+As $$D(1)-D(0)$$ is always 0 for Always Taker and Never Taker,  and by monotonicity condition, we ruled out the Defiers.&#x20;
+
+$$
+= \mathbb{E}\left[( D ( 1 ) - D ( 0 ) ) \left(Y(1)-Y\left(0\right)\right) \mid D(1)-D(0)=1\right] P(D(1)-D(0)=1)
+$$
+
+$$
+= \mathbb{E}\left[( D ( 1 ) - D ( 0 ) ) \left(Y(1)-Y\left(0\right)\right) \mid D(1)-D(0)>1\right]
+$$
+
+Which only focuses on the Compliers.
 
 ### LATE
 
+The TSLS/IV estimand equals
 
+$$
+\frac{\operatorname{Cov}[Y, Z]}{\operatorname{Cov}[D, Z]}=E[\underbrace{[Y(1)-Y(0)}_{\mathrm{TE}} \mid \underbrace{D(1)>D(0)}_{\text {local }}] \equiv \mathrm{LATE}
+$$
 
+This is called the local average treatment effects. Which denotes the **Average treatment effect of the subpopulation of people for whom a change in the value of the instrument switched them from being non-treated to treated: the so-called compliers.**
 
+Since $$\operatorname{Cov}[Y, Z] = E[Y \mid Z=1]-E[Y \mid Z=0] = E\left[Y(1)-Y{(0)} \mid  D(1)>D(0)\right] P(D(1)-D(0)=1)$$&#x20;
+
+$$\operatorname{Cov}[D, Z] = E[D \mid Z=1]-E[D \mid Z=0]=P\left(D(1)>D(0)\right)$$
+
+This is because $$D=Z D(1)+(1-Z) D(0)$$, then&#x20;
+
+$$
+\begin{aligned} E[D \mid Z=1]-E[D \mid Z=0] = & E[D(1) \mid Z=1]-E[D(0) \mid Z=0]\\ = & E[D(1)-D(0)] \\ = & 1 \cdot P(D(1)-D(0)=1)+(-1) P(D(1)-D(0)=-1) \\ & +0 \cdot P(D(1)-D(0)=0)\\ =&P(D(1)-D(0)=1) \end{aligned}
+$$
+
+Because we ruled out the defiers.
 
 ### Monotonicity
 
+As before, we have shown that monotonicity will rule out the defiers.
+
+Monotonicity: while the instrument may have no effect on some people, all those who are affected are affected in the same way. Without monotonicity, we would have
+
+$$
+\begin{gathered} E[Y \mid Z=1]-E[Y \mid Z=0]=E[Y(1)-Y(0) \mid D(1)>D(0)] P\{D(1)> \\ D(0)\}-E[Y(1)-Y(0) \mid D(1)<D(0)] P\{D(1)<D(0)\} . \end{gathered}
+$$
+
+Treatment effects may be positive for everyone (i.e., $$Y(1)-Y(0)>0$$ ) yet the reduced form is zero because effects on compliers are canceled out by effects on defiers, i.e., those individuals for which the instrument pushes them out of treatment $$(D(1)=0$$ and $$D(0)=1)$$.
+
+This doesn't come up in a constant effect model where $$\beta=Y(1)-Y(0)$$ is constant, as in such case
+
+$$
+\begin{aligned} E[Y \mid Z=1]-E[Y \mid Z=0] & =\beta\{P\{D(1)>D(0)\}-P\{D(1)<D(0)\}\} \\ & =\beta E[D(1)-D(0)], \end{aligned}
+$$
+
+and so a zero reduced-form effect means either the first stage is zero or $$\beta=0$$.
