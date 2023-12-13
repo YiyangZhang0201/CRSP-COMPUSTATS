@@ -22,7 +22,7 @@ $$
     $$
     Y=\beta_0+\beta_1 D .
     $$
-3.  We interpret $$\beta_0$$ as $$Y(0)$$ and $$\beta_1$$ as $$Y(1)-Y(0)$$, where $$Y(1)$$ and $$Y(0)$$ are potential or counterfactual outcomes. Using this notation, we may rewrite the equation as
+3.  We interpret $$\beta_0$$ as $$Y(0)$$ and $$\beta_1$$ as $$Y(1)-Y(0)$$, where $$Y(1)$$ and $$Y(0)$$ are potential or counterfactual outcomes. Using this notation, we may rewrite the equation as **Potential Outcome Model:**
 
     $$
     Y=D Y(1)+(1-D) Y(0)\\\text{or}\\Y= \begin{cases}Y(1) & \text { if } D=1 \\ Y(0) & \text { if } D= 0 .\end{cases}
@@ -94,4 +94,146 @@ Consider the slope coefficient from TSLS/IV regression of $$Y$$ on $$D$$ with $$
 $$
 \frac{\operatorname{Cov}[Y, Z]}{\operatorname{Cov}[D, Z]}=\frac{E[Y \mid Z=1]-E[Y \mid Z=0]}{E[D \mid Z=1]-E[D \mid Z=0]}
 $$
+
+Expressing in Terms of Expected Values:
+
+* The numerator, $$E[Y \mid Z=1]-E[Y \mid Z=0]$$, represents the difference in the expected value of $$\mathrm{Y}$$ when $$\mathrm{Z}$$ changes from 0 to 1 .
+* The denominator, $$E[D \mid Z=1]-E[D \mid Z=0]$$, represents the difference in the expected value of $$\mathrm{D}$$ (take-up of the treatment) when $$\mathrm{Z}$$ changes from 0 to 1.
+
+Take-Up Ratio: The ratio $$\frac{E[D \mid Z=1]-E[D \mid Z=0]}{\operatorname{Var}[Z]}$$ can be interpreted as the take-up ratio. It indicates the percentage of people who will take the treatment when offered (i.e., when $$\mathrm{Z}$$ changes from 0 to 1 ). It's a measure of the effectiveness of the instrument in inducing changes in the treatment variable.
+
+**Proof:**
+
+Standard Regression Formula: In a simple linear regression, without considering endogeneity, the coefficient $$\beta_1$$ is given by:
+
+$$
+\beta_1=\frac{\operatorname{Cov}(Y, D)}{\operatorname{Var}(D)}
+$$
+
+IV Regression Setup: However, in the presence of endogeneity (where D is correlated with the error term), this formula doesn't yield a consistent estimate. Here's where IV regression using an instrument $$Z$$ comes into play.
+
+Assumptions:
+
+1. Relevance: $$Z$$ is correlated with $$\mathrm{D}$$ (i.e., $$\operatorname{Cov}(D, Z) \neq 0$$ ).
+2. Exogeneity: $$Z$$ is not correlated with the error term in the $$Y$$ regression.
+
+Two-Stage Least Squares (TSLS) Process:
+
+1. First Stage: Regress $$\mathrm{D}$$ on $$\mathrm{Z}$$ and get the fitted values $$\hat{D}$$ :
+
+$$
+\begin{aligned} & D=\pi_0+\pi_1 Z+\epsilon \\ & \hat{D}=\pi_0+\pi_1 Z \end{aligned}
+$$
+
+2. Second Stage: Regress Y on $$\hat{D}$$ :
+
+$$
+Y=\alpha_0+\beta_1 \hat{D}+u
+$$
+
+Now, let's derive the IV estimate of $$\beta_1$$ :
+
+1. Covariance of $$Y$$ and $$\hat{D}$$ : The covariance of $$Y$$ with $$\hat{D}$$ is given by:
+
+$$
+\operatorname{Cov}(Y, \hat{D})=\operatorname{Cov}\left(Y, \pi_0+\pi_1 Z\right)
+$$
+
+Since $$\pi_0$$ is a constant, it drops out in the covariance, leaving:
+
+$$
+\operatorname{Cov}(Y, \hat{D})=\pi_1 \operatorname{Cov}(Y, Z)
+$$
+
+2. Variance of $$\hat{D}$$ : Similarly, the variance of $\hat{D}$ is:
+
+$$
+\operatorname{Var}(\hat{D})=\operatorname{Var}\left(\pi_0+\pi_1 Z\right)
+$$
+
+Again, $$\pi_0$$ being constant, it drops out, leaving:
+
+$$
+\operatorname{Var}(\hat{D})=\pi_1^2 \operatorname{Var}(Z)
+$$
+
+3. Substituting in the Second Stage: In the second stage, $$\beta_1$$ is estimated as the coefficient of $$\hat{D}$$ in the regression of $$Y$$ on $$\hat{D}$$ :
+
+$$
+\beta_1=\frac{\operatorname{Cov}(Y, \hat{D})}{\operatorname{Var}(\hat{D})}
+$$
+
+Substituting our expressions for $$\operatorname{Cov}(Y, \hat{D})$$ and $$\operatorname{Var}(\hat{D})$$ :
+
+$$
+\begin{aligned} & \beta_1=\frac{\pi_1 \operatorname{Cov}(Y, Z)}{\pi_1^2 \operatorname{Var}(Z)} \\ & \beta_1=\frac{\operatorname{Cov}(Y, Z)}{\pi_1 \operatorname{Var}(Z)} \end{aligned}
+$$
+
+4. Relation to $$\operatorname{Cov}(D, Z)$$ : From the first stage, we know that $$\pi_1=\frac{\operatorname{Cov}(D, Z)}{\operatorname{Var}(Z)}$$. Substituting $$\pi_1$$ :
+
+$$
+\beta_1=\frac{\operatorname{Cov}(Y, Z)}{\frac{\operatorname{Cov}(D, Z)}{\operatorname{Var}(Z)} \cdot \operatorname{Var}(Z)}
+$$
+
+Simplifying, we get:
+
+$$
+\beta_1=\frac{\operatorname{Cov}(Y, Z)}{\operatorname{Cov}(D, Z)}
+$$
+
+WALD estimator is the estimator used for this TSLS regression $$\beta_1$$, it can be represented as:
+
+$$
+\hat{\beta}_1=\frac{\hat{E[Y \mid Z=1]}-\hat{E[Y \mid Z=0]}}{\hat{E[D \mid Z=1]}-\hat{E[D \mid Z=0]}}
+$$
+
+## Potential Treatments
+
+Now, we want to express this quantity&#x20;
+
+$$
+\beta_1 = \frac{\operatorname{Cov}[Y, Z]}{\operatorname{Cov}[D, Z]}=\frac{E[Y \mid Z=1]-E[Y \mid Z=0]}{E[D \mid Z=1]-E[D \mid Z=0]}
+$$
+
+in terms of the treatment effect $$Y(1)-Y(0)$$ somehow.
+
+Towards our goal, it is useful to also introduce the following equation for $$D$$:
+
+$$
+\begin{aligned} D &= Z D(1)+(1-Z) D(0) \\ & =D(0)+(D(1)-D(0)) Z \\ & =\quad \pi_0+\pi_1 Z  \end{aligned}
+$$
+
+where $$\pi_0=D(0), \pi_1=D(1)-D(0)$$, and $$D(1)$$ and $$D(0)$$ are **potential or counterfactual treatments**.
+
+We impose the following versions of instrument exogeneity and instrument relevance, respectively:&#x20;
+
+$$
+(Y(1), Y(0), D(1), D(0)) \perp Z
+$$
+
+$$
+P\{D(1) \neq D(0)\}=P\left\{\pi_1 \neq 0\right\}>0
+$$
+
+We further assume the following **Monotonicity Condition**:
+
+$$
+P\{D(1) \geq D(0)\}=P\left\{\pi_1 \geq 0\right\}=1
+$$
+
+This monotonicity condition eliminates the defiers. If the monotonicity does not hold, we can have that under this condition, $$D(0)=0 \quad (Z=1) < D(0)=1\quad(Z=0)$$, which will include the defiers.
+
+### TSLS Estimator to Form Y(1) - Y(0)
+
+
+
+
+
+### LATE
+
+
+
+
+
+### Monotonicity
 
