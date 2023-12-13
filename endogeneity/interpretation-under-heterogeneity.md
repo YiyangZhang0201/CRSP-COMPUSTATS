@@ -262,7 +262,7 @@ Which only focuses on the Compliers.
 The TSLS/IV estimand equals
 
 $$
-\frac{\operatorname{Cov}[Y, Z]}{\operatorname{Cov}[D, Z]}=E[\underbrace{[Y(1)-Y(0)}_{\mathrm{TE}} \mid \underbrace{D(1)>D(0)}_{\text {local }}] \equiv \mathrm{LATE}
+\frac{\operatorname{Cov}[Y, Z]}{\operatorname{Cov}[D, Z]}=E[\underbrace{Y(1)-Y(0)}_{\mathrm{TE}} \mid \underbrace{D(1)>D(0)}_{\text {local }}] \equiv \mathrm{LATE}
 $$
 
 This is called the local average treatment effects. Which denotes the **Average treatment effect of the subpopulation of people for whom a change in the value of the instrument switched them from being non-treated to treated: the so-called compliers.**
@@ -298,3 +298,19 @@ $$
 $$
 
 and so a zero reduced-form effect means either the first stage is zero or $$\beta=0$$.
+
+### Monotonicity with one-sided Compliance
+
+Randomized trial with non-compliance: the treatment assignment as an "offer of treatment" $$Z$$ (the instrument) and the actual treatment $$D$$ determines whether the subject actually had the treatment.
+
+Assume no one in the control group has access to the treatment: $$D(0)=0$$ while $$D(1) \in\{0,1\}$$, in this case, Monotonicity automatically holds: $$D(1) \geq D(0)$$
+
+Since $$D(1)$$ is a choice, a comparison between those actually treated $$(D=1)$$ and the control $$(D=0)$$ group is misleading. Two alternatives are frequently used.
+
+**Intention to Treat Effect:** a comparison between those who were offered treatment $$(Z=1)$$ and the control $$(Z=0)$$ group.
+
+In this case: LATE = ATT: IV using $$Z$$ as an instrumental variable for $$D$$, which leads to LATE. Since $$D(0)=0$$, LATE returns the effect of treatment on the treated (ATT).
+
+LATE: $$E[Y(1)-Y(0) \mid D(1)>D(0)]$$
+
+ATT: $$E[Y(1)-Y(0) \mid D=1]$$
