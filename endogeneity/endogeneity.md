@@ -114,6 +114,18 @@ $$
 Y=\beta_0^*+\hat{X}_1^{\prime} \beta_1^*+U^* \text { with }\left\{\begin{array}{l} \beta_0^*=\beta_0 \\ \beta_1^*=\beta_1 \\ U^*=-V^{\prime} \beta_1+U \end{array}\right.
 $$
 
+This model is endogenous because:
+
+$$
+\begin{aligned} & \operatorname{Cov}\left(\hat{X}_1, U^*\right)=\operatorname{Cov}\left(X_1+V, U-V^{\prime} \beta_1\right) \\ & =\operatorname{Cov}(X_1, U)-\operatorname{Cov}\left(X_1, V^{\prime} \beta_1\right)+\operatorname{Cov}(V, U)-\operatorname{Cov}\left(V, V^{\prime} \beta_1\right) \\ & =0-\operatorname{Cov}\left(X_1, V^{\prime} \beta_1\right)+0-\operatorname{Cov}\left(V, V^{\prime} \beta_1\right) \\ & =-\operatorname{Var}(V) \beta_1 \neq 0 \end{aligned}
+$$
+
+$$
+\operatorname{Cov}\left(\hat{X}_1, U^*\right) =\mathbb{E}\left[\hat{X}_1U^*\right]-\mathbb{E}\left[\hat{X}_1\right] \mathbb{E}\left[U^*\right]=\mathbb{E}\left[\hat{X}_1 U^*\right] \neq 0
+$$
+
+Therefore, we showed this model is endogenous. Since if $$Var(V)=0$$, it is meaning less.
+
 As $$\beta_1^*$$ is the only thing we are interested in. Now we use the projection formula from sub-vector $$\beta$$ estimation:
 
 $$

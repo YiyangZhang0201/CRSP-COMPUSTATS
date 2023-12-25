@@ -211,6 +211,8 @@ $$
 (Y(1), Y(0), D(1), D(0)) \perp Z
 $$
 
+Note that, this assumption is actually stronger than the exogeneity.
+
 $$
 P\{D(1) \neq D(0)\}=P\left\{\pi_1 \neq 0\right\}>0
 $$
