@@ -1,6 +1,10 @@
 # Endogeneity
 
-**In this section , we are going to focus on Linear Regression When** $$E[XU] \neq 0$$**.**&#x20;
+**In this section , we are going to focus on Linear Regression When** $$E[XU] \neq 0$$**.  This condition is equivalent to** $$E[U|X]\neq0$$**.**&#x20;
+
+I will illustrate both conditions in detail in the following. However, they are somehow equivalent.
+
+### Condition 1: E\[XU] not equal to 0
 
 Let $$(Y, X, U)$$ be a random vector where $$Y$$ and $$U$$ take values in $$\mathbf{R}$$ and $$X \in \mathbf{R}^{k+1}$$. Assume further that $$X=\left(X_0, X_1, \ldots, X_k\right)^{\prime}$$ with $$X_0=1$$ and let $$\beta=\left(\beta_0, \beta_1, \ldots, \beta_k\right)^{\prime} \in \mathbf{R}^{k+1}$$ be such that
 
@@ -55,3 +59,7 @@ $$
 $$
 
 Therefore, $$p \lim _{n \rightarrow \infty} \hat{\beta} \neq \beta$$, the OLS estimator is inconsistent and biased.
+
+### Condition 2: E\[U|X] not equal to 0
+
+For regression model
